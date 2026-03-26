@@ -101,12 +101,12 @@ function Home() {
     window.open(`https://www.instagram.com/`, '_blank');
   };
   
-  // Parallax transforms for Hero Section - Reduced intensity on mobile
-  const bgOrb1Y = useTransform(scrollY, [0, 1000], [0, isMobile ? 80 : 250]);
-  const bgOrb2Y = useTransform(scrollY, [0, 1000], [0, isMobile ? -50 : -150]);
-  const bgOrb3Y = useTransform(scrollY, [0, 1000], [0, isMobile ? 30 : 100]);
-  const textY = useTransform(scrollY, [0, 1000], [0, isMobile ? 40 : 120]);
-  const imageY = useTransform(scrollY, [0, 1000], [0, isMobile ? 15 : 40]);
+  // Parallax transforms for Hero Section - Disabled/Aggressively reduced on mobile for performance
+  const bgOrb1Y = useTransform(scrollY, [0, 1000], [0, isMobile ? 0 : 250]);
+  const bgOrb2Y = useTransform(scrollY, [0, 1000], [0, isMobile ? 0 : -150]);
+  const bgOrb3Y = useTransform(scrollY, [0, 1000], [0, isMobile ? 0 : 100]);
+  const textY = useTransform(scrollY, [0, 1000], [0, isMobile ? 0 : 120]);
+  const imageY = useTransform(scrollY, [0, 1000], [0, isMobile ? 0 : 40]);
 
   // Drag-to-scroll logic for Portfolio
   const scrollRef = React.useRef<HTMLDivElement>(null);
@@ -208,30 +208,34 @@ function Home() {
 
       {/* 2. Hero Section */}
       <section className="relative min-h-screen w-full flex items-center justify-center pt-20 md:pt-28 pb-10 md:pb-14 overflow-hidden watercolor-bg">
-        {/* Decorative Floating Background Elements with Parallax */}
-        <motion.div style={{ y: bgOrb1Y }} className="absolute top-1/4 left-1/4 w-64 h-64 pointer-events-none">
-          <motion.div 
-            animate={{ y: [0, -30, 0], opacity: [0.3, 0.6, 0.3] }} 
-            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-            className="w-full h-full bg-rose/40 rounded-full blur-3xl"
-          />
-        </motion.div>
-        
-        <motion.div style={{ y: bgOrb2Y }} className="absolute bottom-1/4 right-1/3 w-80 h-80 pointer-events-none">
-          <motion.div 
-            animate={{ y: [0, 40, 0], opacity: [0.2, 0.5, 0.2] }} 
-            transition={{ repeat: Infinity, duration: 8, ease: "easeInOut", delay: 1 }}
-            className="w-full h-full bg-mint/40 rounded-full blur-3xl"
-          />
-        </motion.div>
-        
-        <motion.div style={{ y: bgOrb3Y }} className="absolute top-1/3 right-1/4 w-56 h-56 pointer-events-none">
-          <motion.div 
-            animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0], opacity: [0.2, 0.4, 0.2] }} 
-            transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
-            className="w-full h-full bg-peach/30 rounded-full blur-3xl"
-          />
-        </motion.div>
+        {/* Decorative Floating Background Elements with Parallax - Hidden on mobile */}
+        {!isMobile && (
+          <>
+            <motion.div style={{ y: bgOrb1Y }} className="absolute top-1/4 left-1/4 w-64 h-64 pointer-events-none">
+              <motion.div 
+                animate={{ y: [0, -30, 0], opacity: [0.3, 0.6, 0.3] }} 
+                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                className="w-full h-full bg-rose/40 rounded-full blur-3xl"
+              />
+            </motion.div>
+            
+            <motion.div style={{ y: bgOrb2Y }} className="absolute bottom-1/4 right-1/3 w-80 h-80 pointer-events-none">
+              <motion.div 
+                animate={{ y: [0, 40, 0], opacity: [0.2, 0.5, 0.2] }} 
+                transition={{ repeat: Infinity, duration: 8, ease: "easeInOut", delay: 1 }}
+                className="w-full h-full bg-mint/40 rounded-full blur-3xl"
+              />
+            </motion.div>
+            
+            <motion.div style={{ y: bgOrb3Y }} className="absolute top-1/3 right-1/4 w-56 h-56 pointer-events-none">
+              <motion.div 
+                animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0], opacity: [0.2, 0.4, 0.2] }} 
+                transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
+                className="w-full h-full bg-peach/30 rounded-full blur-3xl"
+              />
+            </motion.div>
+          </>
+        )}
 
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 md:gap-16 lg:gap-32 px-4 sm:px-6 text-center lg:text-left">
           <motion.div style={{ y: textY }} className="flex-[1.2] z-10 lg:pr-12 order-1 lg:order-1">
@@ -242,7 +246,7 @@ function Home() {
                 hidden: { opacity: 0 },
                 show: {
                   opacity: 1,
-                  transition: { staggerChildren: 0.2, delayChildren: 0.1 }
+                  transition: { staggerChildren: isMobile ? 0.05 : 0.2, delayChildren: isMobile ? 0 : 0.1 }
                 }
               }}
             >
@@ -319,7 +323,7 @@ function Home() {
                   <motion.div 
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.5, type: "spring", stiffness: 200, damping: 15 }}
+                    transition={{ delay: isMobile ? 0.3 : 1.5, type: "spring", stiffness: 200, damping: 15 }}
                     className="absolute -bottom-4 -left-4 lg:-bottom-8 lg:-left-8 bg-white rounded-full p-3 lg:p-5 shadow-xl border-2 border-lavender flex items-center justify-center"
                   >
                     <Sparkles className="text-pink-600 w-6 h-6 lg:w-8 lg:h-8" />
@@ -335,7 +339,7 @@ function Home() {
       <section id="services" className="py-10 md:py-14 unifying-bg overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: isMobile ? 20 : 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-8 md:mb-12 text-center lg:text-left"
@@ -350,10 +354,10 @@ function Home() {
             {SERVICES.map((service, index) => (
               <motion.div 
                 key={service.title}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: isMobile ? 20 : 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: isMobile ? index * 0.05 : index * 0.1 }}
                 className={`group ${service.color} p-5 sm:p-6 md:p-8 ${service.shape} shadow-lg border-2 border-white/50 relative transition-all duration-500 hover:-translate-y-2 hover:-rotate-1 cursor-pointer ${index % 3 === 1 ? 'lg:mt-16' : ''} ${index % 3 === 2 ? 'lg:mt-8' : ''}`}
               >
                 <div className={`absolute -top-4 ${index % 2 === 0 ? '-right-4' : '-left-4'} bg-white rounded-full p-3 sm:p-4 shadow-md ${service.iconColor}`}>
@@ -386,7 +390,7 @@ function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: isMobile ? 20 : 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex flex-col md:flex-row items-center md:items-baseline justify-between mb-4 md:mb-6 gap-6 md:gap-8 text-center md:text-left"
