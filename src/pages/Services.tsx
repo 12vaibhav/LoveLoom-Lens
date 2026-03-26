@@ -226,12 +226,12 @@ const Services = () => {
           </div>
           
           {/* Service Selector Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8 md:mb-12">
+          <div className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-2 md:gap-3 lg:gap-4 mb-8 md:mb-12 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 no-scrollbar">
             {SERVICES_DATA.map((service) => (
               <button
                 key={service.id}
                 onClick={() => setActiveServiceId(service.id)}
-                className={`flex items-center gap-3 px-5 py-3 rounded-full font-bold text-sm transition-all duration-300 border-2 ${
+                className={`flex items-center gap-2 lg:gap-3 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm transition-all duration-300 border-2 whitespace-nowrap ${
                   activeServiceId === service.id 
                   ? 'bg-accent-pink border-accent-pink text-white shadow-lg scale-105' 
                   : 'bg-white/60 backdrop-blur-sm border-lavender/30 text-slate-600 hover:border-accent-pink/40 hover:bg-white'
