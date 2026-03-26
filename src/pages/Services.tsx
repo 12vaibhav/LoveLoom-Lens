@@ -255,12 +255,6 @@ const Services = () => {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="space-y-8 md:space-y-10"
             >
-              <div className="text-center max-w-3xl mx-auto">
-                <div className="inline-flex items-center gap-2 px-4 py-1 bg-accent-pink/10 text-accent-pink rounded-full text-xs font-bold uppercase tracking-widest mb-4">
-                  {activeService.icon}
-                  {activeService.title} 
-                </div>
-              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 {activeService.packages.map((pkg, pIdx) => (
