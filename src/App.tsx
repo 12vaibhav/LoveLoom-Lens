@@ -438,9 +438,9 @@ function Home() {
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-1, 1, -1], x: [-2.5, 2.5, -2.5] }}
-              transition={{ delay: 0.1, rotate: { repeat: Infinity, duration: isMobile ? 12 : 8, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 10, ease: "easeInOut" } }}
-              whileHover={{ scale: 1.05, rotate: 0 }}
+              animate={isMobile ? { rotate: 0, x: 0, opacity: 1, scale: 1 } : { rotate: [-1, 1, -1], x: [-2.5, 2.5, -2.5] }}
+              transition={isMobile ? { duration: 0 } : { delay: 0.1, rotate: { repeat: Infinity, duration: 8, ease: "easeInOut" }, x: { repeat: Infinity, duration: 10, ease: "easeInOut" } }}
+              whileHover={isMobile ? {} : { scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 group cursor-pointer snap-center select-none"
             >
@@ -479,9 +479,9 @@ function Home() {
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [1, -1, 1], x: [2, -2, 2] }}
-              transition={{ delay: 0.2, rotate: { repeat: Infinity, duration: isMobile ? 12 : 7, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 9, ease: "easeInOut" } }}
-              whileHover={{ scale: 1.05, rotate: 0 }}
+              animate={isMobile ? { rotate: 0, x: 0, opacity: 1, scale: 1 } : { rotate: [1, -1, 1], x: [2, -2, 2] }}
+              transition={isMobile ? { duration: 0 } : { delay: 0.2, rotate: { repeat: Infinity, duration: 7, ease: "easeInOut" }, x: { repeat: Infinity, duration: 9, ease: "easeInOut" } }}
+              whileHover={isMobile ? {} : { scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 mt-12 group cursor-pointer snap-center select-none"
             >
@@ -516,9 +516,9 @@ function Home() {
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-0.8, 0.8, -0.8], x: [-3, 3, -3] }}
-              transition={{ delay: 0.4, rotate: { repeat: Infinity, duration: isMobile ? 12 : 9, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 11, ease: "easeInOut" } }}
-              whileHover={{ scale: 1.05, rotate: 0 }}
+              animate={isMobile ? { rotate: 0, x: 0, opacity: 1, scale: 1 } : { rotate: [-0.8, 0.8, -0.8], x: [-3, 3, -3] }}
+              transition={isMobile ? { duration: 0 } : { delay: 0.4, rotate: { repeat: Infinity, duration: 9, ease: "easeInOut" }, x: { repeat: Infinity, duration: 11, ease: "easeInOut" } }}
+              whileHover={isMobile ? {} : { scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 group cursor-pointer snap-center select-none"
             >
@@ -552,9 +552,9 @@ function Home() {
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [0.7, -0.7, 0.7], x: [2.5, -2.5, 2.5] }}
-              transition={{ delay: 0.1, rotate: { repeat: Infinity, duration: isMobile ? 12 : 7.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 9.5, ease: "easeInOut" } }}
-              whileHover={{ scale: 1.05, rotate: 0 }}
+              animate={isMobile ? { rotate: 0, x: 0, opacity: 1, scale: 1 } : { rotate: [0.7, -0.7, 0.7], x: [2.5, -2.5, 2.5] }}
+              transition={isMobile ? { duration: 0 } : { delay: 0.1, rotate: { repeat: Infinity, duration: 7.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: 9.5, ease: "easeInOut" } }}
+              whileHover={isMobile ? {} : { scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 mt-6 group cursor-pointer snap-center select-none"
             >
@@ -588,9 +588,9 @@ function Home() {
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-1.2, 1.2, -1.2], x: [-4, 4, -4] }}
-              transition={{ delay: 0.3, rotate: { repeat: Infinity, duration: isMobile ? 12 : 8.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: 10.5, ease: "easeInOut" } }}
-              whileHover={{ scale: 1.05, rotate: 0 }}
+              animate={isMobile ? { rotate: 0, x: 0, opacity: 1, scale: 1 } : { rotate: [-1.2, 1.2, -1.2], x: [-4, 4, -4] }}
+              transition={isMobile ? { duration: 0 } : { delay: 0.3, rotate: { repeat: Infinity, duration: 8.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: 10.5, ease: "easeInOut" } }}
+              whileHover={isMobile ? {} : { scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 group cursor-pointer snap-center select-none"
             >
@@ -624,9 +624,9 @@ function Home() {
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [0.9, -0.9, 0.9], x: [3.5, -3.5, 3.5] }}
-              transition={{ delay: 0.5, rotate: { repeat: Infinity, duration: isMobile ? 12 : 6.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 8.5, ease: "easeInOut" } }}
-              whileHover={{ scale: 1.05, rotate: 0 }}
+              animate={isMobile ? { rotate: 0, x: 0, opacity: 1, scale: 1 } : { rotate: [0.9, -0.9, 0.9], x: [3.5, -3.5, 3.5] }}
+              transition={isMobile ? { duration: 0 } : { delay: 0.5, rotate: { repeat: Infinity, duration: 6.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: 8.5, ease: "easeInOut" } }}
+              whileHover={isMobile ? {} : { scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 mt-12 group cursor-pointer snap-center select-none mr-12"
             >
@@ -661,9 +661,9 @@ function Home() {
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-0.6, 0.6, -0.6], x: [-3, 3, -3] }}
-              transition={{ delay: 0.2, rotate: { repeat: Infinity, duration: isMobile ? 12 : 8, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 10, ease: "easeInOut" } }}
-              whileHover={{ scale: 1.05, rotate: 0 }}
+              animate={isMobile ? { rotate: 0, x: 0, opacity: 1, scale: 1 } : { rotate: [-0.6, 0.6, -0.6], x: [-3, 3, -3] }}
+              transition={isMobile ? { duration: 0 } : { delay: 0.2, rotate: { repeat: Infinity, duration: 8, ease: "easeInOut" }, x: { repeat: Infinity, duration: 10, ease: "easeInOut" } }}
+              whileHover={isMobile ? {} : { scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 mt-6 group cursor-pointer snap-center select-none mr-12"
             >
