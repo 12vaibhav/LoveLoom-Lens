@@ -211,13 +211,13 @@ const Services = () => {
       </section>
 
       {/* 3. Combined Service Selection & Pricing Section */}
-      <section id="services-overview" className="py-12 md:py-20 px-4 sm:px-6 unifying-bg shadow-inner relative overflow-hidden">
+      <section id="services-overview" className="py-8 md:py-14 px-4 sm:px-6 unifying-bg shadow-inner relative overflow-hidden">
         {/* Background elements for depth */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-accent-pink/5 rounded-full blur-3xl -z-10"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-mint/5 rounded-full blur-3xl -z-10"></div>
         
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-10 md:mb-16">
+          <div className="text-center mb-6 md:mb-10">
             <h2 className="font-script text-4xl sm:text-5xl md:text-7xl text-slate-950 mb-4">The Anthology of Packages</h2>
             <div className="h-1.5 w-24 bg-accent-pink rounded-full mx-auto mb-6"></div>
             <p className="text-slate-600 max-w-2xl mx-auto text-base md:text-lg">
@@ -226,7 +226,7 @@ const Services = () => {
           </div>
           
           {/* Service Selector Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 md:mb-16">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8 md:mb-12">
             {SERVICES_DATA.map((service) => (
               <button
                 key={service.id}
@@ -253,10 +253,10 @@ const Services = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="space-y-12"
+              className="space-y-8 md:space-y-10"
             >
-              <div className="text-center max-w-3xl mx-auto space-y-4">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent-pink/10 text-accent-pink rounded-full text-xs font-bold uppercase tracking-widest mb-2">
+              <div className="text-center max-w-3xl mx-auto space-y-3">
+                <div className="inline-flex items-center gap-2 px-4 py-1 bg-accent-pink/10 text-accent-pink rounded-full text-xs font-bold uppercase tracking-widest mb-1">
                   {activeService.icon}
                   Tailored Excellence
                 </div>
