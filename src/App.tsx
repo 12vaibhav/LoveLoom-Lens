@@ -408,14 +408,14 @@ function Home() {
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
-          className={`relative w-full overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing select-none touch-pan-x transition-shadow duration-300 ${!isDragging && !isMobile ? 'snap-x snap-mandatory scroll-smooth' : ''} ${isMobile ? 'overscroll-x-contain' : ''}`}
+          className={`relative w-full overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing select-none transition-shadow duration-300 ${!isDragging && !isMobile ? 'snap-x snap-mandatory scroll-smooth' : ''} ${isMobile ? 'touch-auto' : ''}`}
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
           <div className="flex items-start gap-8 md:gap-20 px-6 md:px-[8vw] pt-24 pb-4 md:pb-8 min-w-max relative group select-none">
             {/* Single Continuous Horizontal Thread - Lifted to align with hooks */}
             <div className="absolute top-[54px] left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-slate-300 to-transparent z-10"></div>
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-1, 1, -1], x: [-2.5, 2.5, -2.5] }}
@@ -448,7 +448,7 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [1, -1, 1], x: [2, -2, 2] }}
@@ -477,7 +477,7 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-0.8, 0.8, -0.8], x: [-3, 3, -3] }}
@@ -505,7 +505,7 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [0.7, -0.7, 0.7], x: [2.5, -2.5, 2.5] }}
@@ -533,7 +533,7 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-1.2, 1.2, -1.2], x: [-4, 4, -4] }}
@@ -561,7 +561,7 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [0.9, -0.9, 0.9], x: [3.5, -3.5, 3.5] }}
@@ -590,7 +590,7 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-0.6, 0.6, -0.6], x: [-3, 3, -3] }}
