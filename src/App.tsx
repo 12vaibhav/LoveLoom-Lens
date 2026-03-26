@@ -12,10 +12,10 @@ import {
   X
 } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
-import Services from './pages/Services';
-import Portfolio from './pages/Portfolio';
-import Contact from './pages/Contact';
-import About from './pages/About';
+const Services = React.lazy(() => import('./pages/Services'));
+const Portfolio = React.lazy(() => import('./pages/Portfolio'));
+const Contact = React.lazy(() => import('./pages/Contact'));
+const About = React.lazy(() => import('./pages/About'));
 import Footer from './components/Footer';
 import { IMAGES, WhatsappIcon, SERVICES, TESTIMONIALS } from './constants';
 import bigHero from './assets/hero/big-image-card.webp';
@@ -367,6 +367,7 @@ function Home() {
                   <img 
                     src={service.img} 
                     alt={service.title} 
+                    loading="lazy"
                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
                     referrerPolicy="no-referrer"
                   />
@@ -443,7 +444,7 @@ function Home() {
               </div>
               <div className="bg-lavender p-4 book-shape-1 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-1 border-4 border-white shadow-inner">
-                  <img src={port1} alt="Portrait" className="w-full h-full object-cover" draggable={false} />
+                  <img src={port1} alt="Portrait" className="w-full h-full object-cover" draggable={false} loading="lazy" />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">The Silent Poet</h4>
@@ -472,7 +473,7 @@ function Home() {
               </div>
               <div className="bg-mint p-4 book-shape-2 shadow-xl border-2 border-white/50">
                 <div className="aspect-square overflow-hidden book-shape-2 border-4 border-white shadow-inner">
-                  <img src={port2} alt="Abstract" className="w-full h-full object-cover" draggable={false} />
+                  <img src={port2} alt="Abstract" className="w-full h-full object-cover" draggable={false} loading="lazy" />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">Golden Slumber</h4>
@@ -500,7 +501,7 @@ function Home() {
               </div>
               <div className="bg-peach p-4 book-shape-3 shadow-xl border-2 border-white/50">
                 <div className="aspect-[4/5] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
-                  <img src={port3} alt="Portrait" className="w-full h-full object-cover" draggable={false} />
+                  <img src={port3} alt="Portrait" className="w-full h-full object-cover" draggable={false} loading="lazy" />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">Floral Vows</h4>
@@ -528,7 +529,7 @@ function Home() {
               </div>
               <div className="bg-rose p-4 book-shape-1 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-1 border-4 border-white shadow-inner">
-                  <img src={port4} alt="The Meeting" className="w-full h-full object-cover" draggable={false} />
+                  <img src={port4} alt="The Meeting" className="w-full h-full object-cover" draggable={false} loading="lazy" />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">The First Meeting</h4>
@@ -556,7 +557,7 @@ function Home() {
               </div>
               <div className="bg-sky p-4 book-shape-3 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
-                  <img src={port5} alt="Landscape" className="w-full h-full object-cover" draggable={false} />
+                  <img src={port5} alt="Landscape" className="w-full h-full object-cover" draggable={false} loading="lazy" />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">Mountain Silence</h4>
@@ -585,7 +586,7 @@ function Home() {
               </div>
               <div className="bg-lavender p-4 book-shape-2 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-2 border-4 border-white shadow-inner">
-                  <img src={port6} alt="Wedding" className="w-full h-full object-cover" draggable={false} />
+                  <img src={port6} alt="Wedding" className="w-full h-full object-cover" draggable={false} loading="lazy" />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">Whispered Vows</h4>
@@ -613,7 +614,7 @@ function Home() {
               </div>
               <div className="bg-sky p-4 book-shape-3 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
-                  <img src={port7} alt="Final Portrait" className="w-full h-full object-cover" draggable={false} />
+                  <img src={port7} alt="Final Portrait" className="w-full h-full object-cover" draggable={false} loading="lazy" />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">Eternal Echoes</h4>
@@ -766,6 +767,7 @@ function Home() {
                       <img 
                         src={port7} 
                         alt="Final Masterpiece" 
+                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
                         referrerPolicy="no-referrer" 
                       />
@@ -806,13 +808,15 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center font-script text-2xl text-slate-400 italic">Unfurling...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </React.Suspense>
     </Router>
   );
 }
