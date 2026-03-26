@@ -226,7 +226,7 @@ const Services = () => {
           </div>
           
           {/* Service Selector Tabs */}
-          <div className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-2 md:gap-3 lg:gap-4 mb-8 md:mb-12 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 no-scrollbar">
+          <div className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-2 md:gap-3 lg:gap-4 mb-10 md:mb-16 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 no-scrollbar">
             {SERVICES_DATA.map((service) => (
               <button
                 key={service.id}
