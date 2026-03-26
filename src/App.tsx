@@ -19,14 +19,23 @@ const About = React.lazy(() => import('./pages/About'));
 import Footer from './components/Footer';
 import { IMAGES, WhatsappIcon, SERVICES, TESTIMONIALS } from './constants';
 import bigHero from './assets/hero/big-image-card.webp';
+import bigHeroMobile from './assets/hero/big-image-card-mobile.webp';
 import smallHero from './assets/hero/small-image-card.webp';
+import smallHeroMobile from './assets/hero/small-image-card-mobile.webp';
 import port1 from './assets/portfolio/portfolio-1.webp';
+import port1Mobile from './assets/portfolio/portfolio-1-mobile.webp';
 import port2 from './assets/portfolio/portfolio-2.webp';
+import port2Mobile from './assets/portfolio/portfolio-2-mobile.webp';
 import port3 from './assets/portfolio/portfolio-3.webp';
+import port3Mobile from './assets/portfolio/portfolio-3-mobile.webp';
 import port4 from './assets/portfolio/portfolio-4.webp';
+import port4Mobile from './assets/portfolio/portfolio-4-mobile.webp';
 import port5 from './assets/portfolio/portfolio-5.webp';
+import port5Mobile from './assets/portfolio/portfolio-5-mobile.webp';
 import port6 from './assets/portfolio/portfolio-6.webp';
+import port6Mobile from './assets/portfolio/portfolio-6-mobile.webp';
 import port7 from './assets/portfolio/portfolio-7.webp';
+import port7Mobile from './assets/portfolio/portfolio-7-mobile.webp';
 
 
 const TiltCard = ({ children, className }: { children: React.ReactNode, className?: string }) => {
@@ -301,8 +310,10 @@ function Home() {
                 >
                   <div className={`book-shape-1 p-2 sm:p-3 shadow-2xl border-4 border-white ${isMobile ? 'bg-white' : 'bg-white/80 backdrop-blur-md'}`}>
                     <div className="aspect-[3/4] overflow-hidden book-shape-1 border-2 border-white shadow-inner">
-                      <img 
+                       <img 
                         src={smallHero} 
+                        srcSet={`${smallHeroMobile} 400w, ${smallHero} 800w`}
+                        sizes="(max-width: 640px) 160px, 200px"
                         alt="Supporting showcase" 
                         className="w-full h-full object-cover"
                         referrerPolicy="no-referrer"
@@ -312,8 +323,10 @@ function Home() {
                 </motion.div>
 
                 <div className={`book-shape-3 p-3 sm:p-6 lg:p-8 shadow-2xl border-4 border-white relative z-10 ${isMobile ? 'bg-white' : 'bg-white/60 backdrop-blur-sm'}`}>
-                  <img 
+                   <img 
                     src={bigHero} 
+                    srcSet={`${bigHeroMobile} 500w, ${bigHero} 1200w`}
+                    sizes="(max-width: 768px) 100vw, 800px"
                     alt="Whimsical couple illustration" 
                     className="w-full h-auto book-shape-3 object-cover shadow-inner"
                     referrerPolicy="no-referrer"
@@ -366,6 +379,8 @@ function Home() {
                 <div className={`aspect-[4/3] sm:aspect-[3/4] overflow-hidden ${service.shape} mb-6 border-4 border-white/80 shadow-inner bg-white/40 flex items-center justify-center`}>
                   <img 
                     src={service.img} 
+                    srcSet={`${service.imgMobile} 500w, ${service.img} 1000w`}
+                    sizes="(max-width: 768px) 100vw, 400px"
                     alt={service.title} 
                     loading="lazy"
                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
@@ -444,7 +459,15 @@ function Home() {
               </div>
               <div className="bg-lavender p-4 book-shape-1 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-1 border-4 border-white shadow-inner">
-                  <img src={port1} alt="Portrait" className="w-full h-full object-cover" draggable={false} loading="lazy" />
+                   <img 
+                    src={port1} 
+                    srcSet={`${port1Mobile} 400w, ${port1} 800w`}
+                    sizes="(max-width: 768px) 280px, 380px"
+                    alt="Portrait" 
+                    className="w-full h-full object-cover" 
+                    draggable={false} 
+                    loading="lazy" 
+                  />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">The Silent Poet</h4>
@@ -473,7 +496,15 @@ function Home() {
               </div>
               <div className="bg-mint p-4 book-shape-2 shadow-xl border-2 border-white/50">
                 <div className="aspect-square overflow-hidden book-shape-2 border-4 border-white shadow-inner">
-                  <img src={port2} alt="Abstract" className="w-full h-full object-cover" draggable={false} loading="lazy" />
+                   <img 
+                    src={port2} 
+                    srcSet={`${port2Mobile} 400w, ${port2} 800w`}
+                    sizes="(max-width: 768px) 280px, 380px"
+                    alt="Abstract" 
+                    className="w-full h-full object-cover" 
+                    draggable={false} 
+                    loading="lazy" 
+                  />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">Golden Slumber</h4>
@@ -501,7 +532,15 @@ function Home() {
               </div>
               <div className="bg-peach p-4 book-shape-3 shadow-xl border-2 border-white/50">
                 <div className="aspect-[4/5] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
-                  <img src={port3} alt="Portrait" className="w-full h-full object-cover" draggable={false} loading="lazy" />
+                   <img 
+                    src={port3} 
+                    srcSet={`${port3Mobile} 400w, ${port3} 800w`}
+                    sizes="(max-width: 768px) 280px, 380px"
+                    alt="Portrait" 
+                    className="w-full h-full object-cover" 
+                    draggable={false} 
+                    loading="lazy" 
+                  />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">Floral Vows</h4>
@@ -529,7 +568,15 @@ function Home() {
               </div>
               <div className="bg-rose p-4 book-shape-1 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-1 border-4 border-white shadow-inner">
-                  <img src={port4} alt="The Meeting" className="w-full h-full object-cover" draggable={false} loading="lazy" />
+                   <img 
+                    src={port4} 
+                    srcSet={`${port4Mobile} 400w, ${port4} 800w`}
+                    sizes="(max-width: 768px) 280px, 380px"
+                    alt="The Meeting" 
+                    className="w-full h-full object-cover" 
+                    draggable={false} 
+                    loading="lazy" 
+                  />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">The First Meeting</h4>
@@ -557,7 +604,15 @@ function Home() {
               </div>
               <div className="bg-sky p-4 book-shape-3 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
-                  <img src={port5} alt="Landscape" className="w-full h-full object-cover" draggable={false} loading="lazy" />
+                   <img 
+                    src={port5} 
+                    srcSet={`${port5Mobile} 400w, ${port5} 800w`}
+                    sizes="(max-width: 768px) 280px, 380px"
+                    alt="Landscape" 
+                    className="w-full h-full object-cover" 
+                    draggable={false} 
+                    loading="lazy" 
+                  />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">Mountain Silence</h4>
@@ -586,7 +641,15 @@ function Home() {
               </div>
               <div className="bg-lavender p-4 book-shape-2 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-2 border-4 border-white shadow-inner">
-                  <img src={port6} alt="Wedding" className="w-full h-full object-cover" draggable={false} loading="lazy" />
+                   <img 
+                    src={port6} 
+                    srcSet={`${port6Mobile} 400w, ${port6} 800w`}
+                    sizes="(max-width: 768px) 280px, 380px"
+                    alt="Wedding" 
+                    className="w-full h-full object-cover" 
+                    draggable={false} 
+                    loading="lazy" 
+                  />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">Whispered Vows</h4>
@@ -614,7 +677,15 @@ function Home() {
               </div>
               <div className="bg-sky p-4 book-shape-3 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
-                  <img src={port7} alt="Final Portrait" className="w-full h-full object-cover" draggable={false} loading="lazy" />
+                   <img 
+                    src={port7} 
+                    srcSet={`${port7Mobile} 400w, ${port7} 800w`}
+                    sizes="(max-width: 768px) 280px, 380px"
+                    alt="Final Portrait" 
+                    className="w-full h-full object-cover" 
+                    draggable={false} 
+                    loading="lazy" 
+                  />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-script text-2xl text-slate-950">Eternal Echoes</h4>
@@ -764,8 +835,10 @@ function Home() {
                     className="bg-white p-3 md:p-4 book-shape-1 shadow-2xl border-2 border-white/50 preserve-3d"
                   >
                     <div className="aspect-[4/5] overflow-hidden book-shape-1 border-4 md:border-6 border-white shadow-inner relative">
-                      <img 
+                       <img 
                         src={port7} 
+                        srcSet={`${port7Mobile} 400w, ${port7} 800w`}
+                        sizes="(max-width: 768px) 100vw, 380px"
                         alt="Final Masterpiece" 
                         loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 

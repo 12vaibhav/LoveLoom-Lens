@@ -26,8 +26,11 @@ import babyImg from '../assets/services/baby-photo.webp';
 import modelingImg from '../assets/services/modeling-photo.webp';
 import productImg from '../assets/services/product-photo.webp';
 import port1 from '../assets/portfolio/portfolio-1.webp';
+import port1Mobile from '../assets/portfolio/portfolio-1-mobile.webp';
 import port2 from '../assets/portfolio/portfolio-2.webp';
+import port2Mobile from '../assets/portfolio/portfolio-2-mobile.webp';
 import port3 from '../assets/portfolio/portfolio-3.webp';
+import port3Mobile from '../assets/portfolio/portfolio-3-mobile.webp';
 
 const About = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -73,19 +76,22 @@ const About = () => {
       name: "Elena Vance",
       role: "Lead Photographer & Founder",
       bio: "With over a decade of experience, Elena captures the soul of every moment.",
-      img: port1
+      img: port1,
+      imgMobile: port1Mobile
     },
     {
       name: "Marcus Thorne",
       role: "Creative Director",
       bio: "Marcus ensures every anthology tells a cohesive and breathtaking story.",
-      img: port2
+      img: port2,
+      imgMobile: port2Mobile
     },
     {
       name: "Sarah Jenkins",
       role: "Post-Production Artist",
       bio: "Sarah's touch brings the ethereal glow to every single frame.",
-      img: port3
+      img: port3,
+      imgMobile: port3Mobile
     }
   ];
 
@@ -204,6 +210,8 @@ const About = () => {
               <div className="relative z-10 rounded-[40px] md:rounded-[60px] overflow-hidden border-4 md:border-8 border-white shadow-2xl aspect-[4/5] max-w-sm mx-auto lg:max-w-none">
                 <img 
                   src={port1} 
+                  srcSet={`${port1Mobile} 400w, ${port1} 800w`}
+                  sizes="(max-width: 640px) 100vw, 500px"
                   alt="Elena Vance - Founder" 
                   loading="lazy"
                   className="w-full h-full object-cover"
@@ -295,6 +303,8 @@ const About = () => {
                 <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden border-4 border-white shadow-xl aspect-[4/5] mb-4 md:mb-6">
                   <img 
                     src={member.img} 
+                    srcSet={`${member.imgMobile} 400w, ${member.img} 800w`}
+                    sizes="(max-width: 640px) 100vw, 300px"
                     alt={member.name} 
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

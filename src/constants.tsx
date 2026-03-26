@@ -3,11 +3,17 @@ import React from 'react';
 import { Heart, Camera, Baby, Sparkles, Image as ImageIcon, Printer } from 'lucide-react';
 
 import weddingImg from './assets/services/wedding photo.webp';
+import weddingImgMobile from './assets/services/wedding photo-mobile.webp';
 import preWeddingImg from './assets/services/Pre-wedding-photo.webp';
+import preWeddingImgMobile from './assets/services/Pre-wedding-photo-mobile.webp';
 import babyImg from './assets/services/baby-photo.webp';
+import babyImgMobile from './assets/services/baby-photo-mobile.webp';
 import modelingImg from './assets/services/modeling-photo.webp';
+import modelingImgMobile from './assets/services/modeling-photo-mobile.webp';
 import productImg from './assets/services/product-photo.webp';
+import productImgMobile from './assets/services/product-photo-mobile.webp';
 import printingImg from './assets/services/photo-printing.webp';
+import printingImgMobile from './assets/services/photo-printing-mobile.webp';
 
 export const IMAGES = {
   avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuCDOIo5rUMQoxGET5r4cUbZAub4chGLQIFzE9HaTLm-Edn3XYjsEW4ByVg6DowoslfvwPFxnqHZsSQSpCKufa-7EXfcdW_GuYfiLY-aYmDpCKYVIneZBhT--0AfXNXD4qLm3gIwvQl9TRFbrxYwn-6V-W00a-r-FsyAWeYgYhSDmy1SyH-SD3ejC9xwIxBIDKIwItrS8ZQVK9dY-utju351l5uQkybMCu8taCBZijcS9dTEiyZI50PRsxyeaULU96l7LR1EHJbJGDo"
@@ -21,7 +27,8 @@ export const SERVICES = [
     color: 'bg-rose', 
     iconColor: 'text-pink-600',
     shape: 'book-shape-1', 
-    img: weddingImg 
+    img: weddingImg,
+    imgMobile: weddingImgMobile
   },
   { 
     title: 'Pre-Wedding Shoot', 
@@ -30,7 +37,8 @@ export const SERVICES = [
     color: 'bg-sky', 
     iconColor: 'text-blue-600',
     shape: 'book-shape-2', 
-    img: preWeddingImg 
+    img: preWeddingImg,
+    imgMobile: preWeddingImgMobile
   },
   { 
     title: 'Newborn Baby', 
@@ -39,7 +47,8 @@ export const SERVICES = [
     color: 'bg-mint', 
     iconColor: 'text-emerald-600',
     shape: 'book-shape-3', 
-    img: babyImg 
+    img: babyImg,
+    imgMobile: babyImgMobile
   },
   { 
     title: 'Candid & Modeling', 
@@ -48,7 +57,8 @@ export const SERVICES = [
     color: 'bg-lavender', 
     iconColor: 'text-purple-600',
     shape: 'book-shape-1', 
-    img: modelingImg 
+    img: modelingImg,
+    imgMobile: modelingImgMobile
   },
   { 
     title: 'Product Photography', 
@@ -57,7 +67,8 @@ export const SERVICES = [
     color: 'bg-peach', 
     iconColor: 'text-orange-600',
     shape: 'book-shape-2', 
-    img: productImg 
+    img: productImg,
+    imgMobile: productImgMobile
   },
   { 
     title: 'Photo Printing', 
@@ -66,7 +77,8 @@ export const SERVICES = [
     color: 'bg-rose', 
     iconColor: 'text-rose-600',
     shape: 'book-shape-3', 
-    img: printingImg 
+    img: printingImg,
+    imgMobile: printingImgMobile
   },
 ];
 

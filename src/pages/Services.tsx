@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { IMAGES, WhatsappIcon } from '../constants';
 import weddingImg from '../assets/services/wedding photo.webp';
+import weddingImgMobile from '../assets/services/wedding photo-mobile.webp';
 
 const SERVICES_DATA = [
   {
@@ -369,6 +370,8 @@ const Services = () => {
               <div className="aspect-[4/5] rounded-[30px] md:rounded-[40px] overflow-hidden shadow-2xl rotate-2 md:rotate-3">
                 <img 
                   src={weddingImg} 
+                  srcSet={`${weddingImgMobile} 500w, ${weddingImg} 1000w`}
+                  sizes="(max-width: 640px) 100vw, 400px"
                   alt="Wedding Highlight" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"

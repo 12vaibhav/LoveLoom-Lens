@@ -17,20 +17,35 @@ import Footer from '../components/Footer';
 import { IMAGES, WhatsappIcon } from '../constants';
 
 import weddingImg from '../assets/services/wedding photo.webp';
+import weddingImgMobile from '../assets/services/wedding photo-mobile.webp';
 import preWeddingImg from '../assets/services/Pre-wedding-photo.webp';
+import preWeddingImgMobile from '../assets/services/Pre-wedding-photo-mobile.webp';
 import babyImg from '../assets/services/baby-photo.webp';
+import babyImgMobile from '../assets/services/baby-photo-mobile.webp';
 import modelingImg from '../assets/services/modeling-photo.webp';
+import modelingImgMobile from '../assets/services/modeling-photo-mobile.webp';
 import productImg from '../assets/services/product-photo.webp';
+import productImgMobile from '../assets/services/product-photo-mobile.webp';
 import printingImg from '../assets/services/photo-printing.webp';
+import printingImgMobile from '../assets/services/photo-printing-mobile.webp';
 import bigHero from '../assets/hero/big-image-card.webp';
+import bigHeroMobile from '../assets/hero/big-image-card-mobile.webp';
 import smallHero from '../assets/hero/small-image-card.webp';
+import smallHeroMobile from '../assets/hero/small-image-card-mobile.webp';
 import port1 from '../assets/portfolio/portfolio-1.webp';
+import port1Mobile from '../assets/portfolio/portfolio-1-mobile.webp';
 import port2 from '../assets/portfolio/portfolio-2.webp';
+import port2Mobile from '../assets/portfolio/portfolio-2-mobile.webp';
 import port3 from '../assets/portfolio/portfolio-3.webp';
+import port3Mobile from '../assets/portfolio/portfolio-3-mobile.webp';
 import port4 from '../assets/portfolio/portfolio-4.webp';
+import port4Mobile from '../assets/portfolio/portfolio-4-mobile.webp';
 import port5 from '../assets/portfolio/portfolio-5.webp';
+import port5Mobile from '../assets/portfolio/portfolio-5-mobile.webp';
 import port6 from '../assets/portfolio/portfolio-6.webp';
+import port6Mobile from '../assets/portfolio/portfolio-6-mobile.webp';
 import port7 from '../assets/portfolio/portfolio-7.webp';
+import port7Mobile from '../assets/portfolio/portfolio-7-mobile.webp';
 
 // Reusable Tilt Component
 const TiltCard = ({ children, className, onClick }: { children: React.ReactNode, className?: string, onClick?: () => void }) => {
@@ -90,21 +105,21 @@ const CATEGORIES = [
 ];
 
 const PORTFOLIO_IMAGES = [
-  { id: 1, category: 'wedding', src: weddingImg, title: 'Ethereal Vows', size: 'tall' },
-  { id: 2, category: 'pre-wedding', src: preWeddingImg, title: 'Golden Hour Love', size: 'wide' },
-  { id: 3, category: 'newborn', src: babyImg, title: 'Pure Innocence', size: 'square' },
-  { id: 4, category: 'candid', src: modelingImg, title: 'Authentic Smile', size: 'tall' },
-  { id: 5, category: 'product', src: productImg, title: 'Shadow & Light', size: 'square' },
-  { id: 6, category: 'printing', src: printingImg, title: 'Printed Legacy', size: 'wide' },
-  { id: 7, category: 'wedding', src: port1, title: 'Intimate Moments', size: 'tall' },
-  { id: 8, category: 'pre-wedding', src: port2, title: 'Mountain Romance', size: 'wide' },
-  { id: 9, category: 'newborn', src: port3, title: 'Tiny Toes', size: 'square' },
-  { id: 10, category: 'candid', src: port4, title: 'Street Magic', size: 'tall' },
-  { id: 11, category: 'product', src: port5, title: 'Elegance Redefined', size: 'square' },
-  { id: 12, category: 'printing', src: port6, title: 'Archival Beauty', size: 'wide' },
-  { id: 13, category: 'wedding', src: port7, title: 'The First Dance', size: 'tall' },
-  { id: 14, category: 'pre-wedding', src: bigHero, title: 'Lakeside Dreams', size: 'wide' },
-  { id: 15, category: 'newborn', src: smallHero, title: 'Soft Slumber', size: 'square' },
+  { id: 1, category: 'wedding', src: weddingImg, srcMobile: weddingImgMobile, title: 'Ethereal Vows', size: 'tall' },
+  { id: 2, category: 'pre-wedding', src: preWeddingImg, srcMobile: preWeddingImgMobile, title: 'Golden Hour Love', size: 'wide' },
+  { id: 3, category: 'newborn', src: babyImg, srcMobile: babyImgMobile, title: 'Pure Innocence', size: 'square' },
+  { id: 4, category: 'candid', src: modelingImg, srcMobile: modelingImgMobile, title: 'Authentic Smile', size: 'tall' },
+  { id: 5, category: 'product', src: productImg, srcMobile: productImgMobile, title: 'Shadow & Light', size: 'square' },
+  { id: 6, category: 'printing', src: printingImg, srcMobile: printingImgMobile, title: 'Printed Legacy', size: 'wide' },
+  { id: 7, category: 'wedding', src: port1, srcMobile: port1Mobile, title: 'Intimate Moments', size: 'tall' },
+  { id: 8, category: 'pre-wedding', src: port2, srcMobile: port2Mobile, title: 'Mountain Romance', size: 'wide' },
+  { id: 9, category: 'newborn', src: port3, srcMobile: port3Mobile, title: 'Tiny Toes', size: 'square' },
+  { id: 10, category: 'candid', src: port4, srcMobile: port4Mobile, title: 'Street Magic', size: 'tall' },
+  { id: 11, category: 'product', src: port5, srcMobile: port5Mobile, title: 'Elegance Redefined', size: 'square' },
+  { id: 12, category: 'printing', src: port6, srcMobile: port6Mobile, title: 'Archival Beauty', size: 'wide' },
+  { id: 13, category: 'wedding', src: port7, srcMobile: port7Mobile, title: 'The First Dance', size: 'tall' },
+  { id: 14, category: 'pre-wedding', src: bigHero, srcMobile: bigHeroMobile, title: 'Lakeside Dreams', size: 'wide' },
+  { id: 15, category: 'newborn', src: smallHero, srcMobile: smallHeroMobile, title: 'Soft Slumber', size: 'square' },
 ];
 
 export default function Portfolio() {
@@ -296,6 +311,8 @@ export default function Portfolio() {
                     <div className="relative overflow-hidden rounded-[28px]">
                       <img 
                         src={img.src} 
+                        srcSet={`${img.srcMobile} 400w, ${img.src} 1000w`}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         alt={img.title} 
                         className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
                         referrerPolicy="no-referrer"
@@ -413,6 +430,8 @@ export default function Portfolio() {
                 <div className="md:w-2/3 bg-slate-100 flex items-center justify-center">
                   <img 
                     src={selectedImage.src} 
+                    srcSet={`${selectedImage.srcMobile} 500w, ${selectedImage.src} 1200w`}
+                    sizes="(max-width: 768px) 100vw, 80vw"
                     alt={selectedImage.title} 
                     className="w-full h-auto max-h-[50vh] md:max-h-[80vh] object-contain"
                     referrerPolicy="no-referrer"
