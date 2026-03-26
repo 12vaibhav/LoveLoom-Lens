@@ -101,12 +101,12 @@ function Home() {
     window.open(`https://www.instagram.com/`, '_blank');
   };
   
-  // Parallax transforms for Hero Section
-  const bgOrb1Y = useTransform(scrollY, [0, 1000], [0, 250]);
-  const bgOrb2Y = useTransform(scrollY, [0, 1000], [0, -150]);
-  const bgOrb3Y = useTransform(scrollY, [0, 1000], [0, 100]);
-  const textY = useTransform(scrollY, [0, 1000], [0, 120]);
-  const imageY = useTransform(scrollY, [0, 1000], [0, 40]);
+  // Parallax transforms for Hero Section - Reduced intensity on mobile
+  const bgOrb1Y = useTransform(scrollY, [0, 1000], [0, isMobile ? 80 : 250]);
+  const bgOrb2Y = useTransform(scrollY, [0, 1000], [0, isMobile ? -50 : -150]);
+  const bgOrb3Y = useTransform(scrollY, [0, 1000], [0, isMobile ? 30 : 100]);
+  const textY = useTransform(scrollY, [0, 1000], [0, isMobile ? 40 : 120]);
+  const imageY = useTransform(scrollY, [0, 1000], [0, isMobile ? 15 : 40]);
 
   // Drag-to-scroll logic for Portfolio
   const scrollRef = React.useRef<HTMLDivElement>(null);
@@ -249,9 +249,9 @@ function Home() {
               <motion.h1 
                 className="font-script text-[3rem] leading-[1.1] sm:text-6xl lg:text-[6.5rem] font-bold text-slate-950 mb-4 sm:mb-8 tracking-tight flex flex-col"
               >
-                <motion.span variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>Your Story,</motion.span>
-                <motion.span variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>Beautifully</motion.span>
-                <motion.span variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }} className="text-slate-900">Unfurled.</motion.span>
+                <motion.span variants={{ hidden: { opacity: 0, y: isMobile ? 20 : 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>Your Story,</motion.span>
+                <motion.span variants={{ hidden: { opacity: 0, y: isMobile ? 20 : 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>Beautifully</motion.span>
+                <motion.span variants={{ hidden: { opacity: 0, y: isMobile ? 20 : 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }} className="text-slate-900">Unfurled.</motion.span>
               </motion.h1>
               
               <motion.p 
@@ -418,8 +418,8 @@ function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={{ rotate: [-1, 1, -1], x: [-2.5, 2.5, -2.5] }}
-              transition={{ delay: 0.1, rotate: { repeat: Infinity, duration: 8, ease: "easeInOut" }, x: { repeat: Infinity, duration: 10, ease: "easeInOut" } }}
+              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-1, 1, -1], x: [-2.5, 2.5, -2.5] }}
+              transition={{ delay: 0.1, rotate: { repeat: Infinity, duration: isMobile ? 12 : 8, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 10, ease: "easeInOut" } }}
               whileHover={{ scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 group cursor-pointer snap-center select-none"
@@ -451,8 +451,8 @@ function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={{ rotate: [1, -1, 1], x: [2, -2, 2] }}
-              transition={{ delay: 0.2, rotate: { repeat: Infinity, duration: 7, ease: "easeInOut" }, x: { repeat: Infinity, duration: 9, ease: "easeInOut" } }}
+              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [1, -1, 1], x: [2, -2, 2] }}
+              transition={{ delay: 0.2, rotate: { repeat: Infinity, duration: isMobile ? 12 : 7, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 9, ease: "easeInOut" } }}
               whileHover={{ scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 mt-12 group cursor-pointer snap-center select-none"
@@ -480,8 +480,8 @@ function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={{ rotate: [-0.8, 0.8, -0.8], x: [-3, 3, -3] }}
-              transition={{ delay: 0.4, rotate: { repeat: Infinity, duration: 9, ease: "easeInOut" }, x: { repeat: Infinity, duration: 11, ease: "easeInOut" } }}
+              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-0.8, 0.8, -0.8], x: [-3, 3, -3] }}
+              transition={{ delay: 0.4, rotate: { repeat: Infinity, duration: isMobile ? 12 : 9, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 11, ease: "easeInOut" } }}
               whileHover={{ scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 group cursor-pointer snap-center select-none"
@@ -508,8 +508,8 @@ function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={{ rotate: [0.7, -0.7, 0.7], x: [2.5, -2.5, 2.5] }}
-              transition={{ delay: 0.1, rotate: { repeat: Infinity, duration: 7.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: 9.5, ease: "easeInOut" } }}
+              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [0.7, -0.7, 0.7], x: [2.5, -2.5, 2.5] }}
+              transition={{ delay: 0.1, rotate: { repeat: Infinity, duration: isMobile ? 12 : 7.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 9.5, ease: "easeInOut" } }}
               whileHover={{ scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 mt-6 group cursor-pointer snap-center select-none"
@@ -536,8 +536,8 @@ function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={{ rotate: [-1.2, 1.2, -1.2], x: [-4, 4, -4] }}
-              transition={{ delay: 0.3, rotate: { repeat: Infinity, duration: 8.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: 10.5, ease: "easeInOut" } }}
+              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-1.2, 1.2, -1.2], x: [-4, 4, -4] }}
+              transition={{ delay: 0.3, rotate: { repeat: Infinity, duration: isMobile ? 12 : 8.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: 10.5, ease: "easeInOut" } }}
               whileHover={{ scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 group cursor-pointer snap-center select-none"
@@ -564,8 +564,8 @@ function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={{ rotate: [0.9, -0.9, 0.9], x: [3.5, -3.5, 3.5] }}
-              transition={{ delay: 0.5, rotate: { repeat: Infinity, duration: 6.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: 8.5, ease: "easeInOut" } }}
+              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [0.9, -0.9, 0.9], x: [3.5, -3.5, 3.5] }}
+              transition={{ delay: 0.5, rotate: { repeat: Infinity, duration: isMobile ? 12 : 6.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 8.5, ease: "easeInOut" } }}
               whileHover={{ scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 mt-12 group cursor-pointer snap-center select-none mr-12"
@@ -593,8 +593,8 @@ function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              animate={{ rotate: [-0.6, 0.6, -0.6], x: [-3, 3, -3] }}
-              transition={{ delay: 0.2, rotate: { repeat: Infinity, duration: 8, ease: "easeInOut" }, x: { repeat: Infinity, duration: 10, ease: "easeInOut" } }}
+              animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-0.6, 0.6, -0.6], x: [-3, 3, -3] }}
+              transition={{ delay: 0.2, rotate: { repeat: Infinity, duration: isMobile ? 12 : 8, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 10, ease: "easeInOut" } }}
               whileHover={{ scale: 1.05, rotate: 0 }}
               style={{ transformOrigin: "top center" }}
               className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 mt-6 group cursor-pointer snap-center select-none mr-12"
@@ -637,7 +637,7 @@ function Home() {
           <motion.div 
             animate={{ x: ["0%", "-50%"] }}
             transition={{ 
-              duration: 40, 
+              duration: isMobile ? 60 : 40, 
               repeat: Infinity, 
               ease: "linear" 
             }}
@@ -743,13 +743,13 @@ function Home() {
                 <TiltCard className="relative z-10 max-w-[280px] md:max-w-xs">
                   <motion.div 
                     initial={{ rotate: 2 }}
-                    animate={{ 
+                    animate={isMobile ? { rotate: 0, y: 0 } : { 
                       rotate: [2, -1, 2],
                       y: [3, -3, 3]
                     }}
                     transition={{ 
                       repeat: Infinity, 
-                      duration: 10, 
+                      duration: isMobile ? 15 : 10, 
                       ease: "easeInOut" 
                     }}
                     whileHover={{ 
