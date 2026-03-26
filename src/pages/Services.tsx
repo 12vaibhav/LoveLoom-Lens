@@ -315,11 +315,11 @@ const Services = () => {
       </section>
 
       {/* 5. Popular Packages Highlight section */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 watercolor-bg">
-        <div className="max-w-5xl mx-auto bg-white/40 backdrop-blur-xl rounded-[40px] md:rounded-[60px] p-6 sm:p-8 md:p-12 lg:p-20 border border-white/50 shadow-2xl">
-          <div className="text-center mb-8 md:mb-12">
-            <span className="text-accent-pink font-bold tracking-widest uppercase text-xs sm:text-sm">Curated Excellence</span>
-            <h2 className="font-script text-4xl sm:text-5xl md:text-6xl text-slate-950 mt-4">The Signature Anthology</h2>
+      <section className="py-12 md:py-16 px-4 sm:px-6 watercolor-bg">
+        <div className="max-w-4xl mx-auto bg-white/40 backdrop-blur-xl rounded-[40px] md:rounded-[50px] p-6 sm:p-8 md:p-10 lg:p-14 border border-white/50 shadow-2xl">
+          <div className="text-center mb-6 md:mb-10">
+            <span className="text-accent-pink font-bold tracking-widest uppercase text-[10px] sm:text-xs">Curated Excellence</span>
+            <h2 className="font-script text-3xl sm:text-4xl md:text-5xl text-slate-950 mt-2">The Signature Anthology</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="space-y-4 sm:space-y-6 order-2 md:order-1">
@@ -332,9 +332,9 @@ const Services = () => {
                 <span className="bg-white/60 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold text-slate-800 border border-accent-pink">Luxury Photo Book</span>
                 <span className="bg-white/60 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold text-slate-800 border border-accent-pink">Engagement Session</span>
               </div>
-              <div className="pt-4 sm:pt-6">
-                <div className="text-3xl sm:text-4xl font-script text-slate-950 mb-4">$3,200 <span className="text-base sm:text-lg font-sans text-slate-500 line-through ml-2">$3,800</span></div>
-                <button className="w-full sm:w-auto bg-accent-pink text-white px-8 py-3 sm:px-10 sm:py-4 rounded-full font-bold hover:bg-white hover:text-accent-pink border-2 border-accent-pink transition-all shadow-xl">
+              <div className="pt-3 sm:pt-4">
+                <div className="text-2xl sm:text-3xl font-script text-slate-950 mb-3">$3,200 <span className="text-sm sm:text-base font-sans text-slate-500 line-through ml-2">$3,800</span></div>
+                <button className="w-full sm:w-auto bg-accent-pink text-white px-7 py-3 sm:px-8 sm:py-3.5 rounded-full font-bold text-sm sm:text-base hover:bg-white hover:text-accent-pink border-2 border-accent-pink transition-all shadow-xl">
                   Inquire Now
                 </button>
               </div>
@@ -350,7 +350,7 @@ const Services = () => {
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 w-24 h-24 sm:w-32 sm:h-32 bg-accent-pink rounded-full flex items-center justify-center text-white font-script text-xl sm:text-2xl -rotate-12 shadow-lg">
+              <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-20 h-20 sm:w-24 sm:h-24 bg-accent-pink rounded-full flex items-center justify-center text-white font-script text-lg sm:text-xl -rotate-12 shadow-lg">
                 Save 15%
               </div>
             </div>
