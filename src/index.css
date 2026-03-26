@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Dancing Script", cursive;
+  
+  --color-lavender: #B1B1FF;
+  --color-mint: #6EE7B7;
+  --color-peach: #FFBD66;
+  --color-rose: #FF9999;
+  --color-sky: #7DD3FC;
+  --color-story-text: #1A141F;
+  --color-accent-pink: #FF4D79;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-[#FFFCF8] text-story-text;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FFFCF8;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #B1B1FF, #FFBD66);
+    border-radius: 10px;
+    border: 2px solid #FFFCF8;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FF4D79;
+  }
+}
+
+@layer utilities {
+  .watercolor-bg {
+    background-image: radial-gradient(circle at 10% 20%, var(--color-lavender) 0%, transparent 40%),
+                      radial-gradient(circle at 90% 80%, var(--color-peach) 0%, transparent 40%),
+                      radial-gradient(circle at 50% 50%, var(--color-mint) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, var(--color-sky) 0%, transparent 40%),
+                      radial-gradient(circle at 20% 80%, var(--color-rose) 0%, transparent 40%);
+    background-blend-mode: multiply;
+  }
+  
+  .unifying-bg {
+    background: linear-gradient(180deg, #FFFCF8 0%, #FFF0E0 100%);
+  }
+
+  .book-shape-1 {
+    border-radius: 20px 60px 20px 60px;
+  }
+  .book-shape-2 {
+    border-radius: 60px 20px 60px 20px;
+  }
+  .book-shape-3 {
+    border-radius: 40px 40px 100px 40px;
+  }
+
+  .text-narrative {
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
