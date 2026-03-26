@@ -5,10 +5,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from 'motion/react';
-import { 
-  Sparkles, 
-  Quote, 
-  Menu, 
+import {
+  Sparkles,
+  Quote,
+  Menu,
   X
 } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
@@ -94,7 +94,7 @@ function Home() {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-  
+
   const shareOnFacebook = () => {
     const url = encodeURIComponent(window.location.href);
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
@@ -109,7 +109,7 @@ function Home() {
   const shareOnInstagram = () => {
     window.open(`https://www.instagram.com/`, '_blank');
   };
-  
+
   // Parallax transforms for Hero Section - Disabled/Aggressively reduced on mobile for performance
   const bgOrb1Y = useTransform(scrollY, [0, 1000], [0, isMobile ? 0 : 250]);
   const bgOrb2Y = useTransform(scrollY, [0, 1000], [0, isMobile ? 0 : -150]);
@@ -138,7 +138,7 @@ function Home() {
     setIsDragging(false);
     if (scrollRef.current) scrollRef.current.style.scrollBehavior = 'smooth';
   };
-  
+
   const handleMouseUp = () => {
     if (isMobile) return;
     setIsDragging(false);
@@ -155,10 +155,10 @@ function Home() {
 
   return (
     <div className="min-h-screen selection:bg-accent-pink/30 overflow-x-hidden">
-      
+
       {/* 1. Pill shaped glassmorphism Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-4">
-        <motion.div 
+        <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -175,7 +175,7 @@ function Home() {
             <Link to="/contact" className="text-slate-800 font-bold hover:text-accent-pink transition-colors">Contact</Link>
           </div>
           <div className="flex items-center gap-2 sm:gap-3">
-            <button 
+            <button
               onClick={shareOnWhatsapp}
               className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-full transition-colors flex items-center justify-center"
               title="Share on WhatsApp"
@@ -185,7 +185,7 @@ function Home() {
             <Link to="/contact" className="hidden sm:block bg-accent-pink hover:bg-white border-2 border-accent-pink text-white hover:text-accent-pink px-5 sm:px-6 py-2 rounded-full font-bold text-sm transition-all shadow-md">
               Book Now
             </Link>
-            <button 
+            <button
               className="md:hidden p-2 text-slate-800 hover:bg-slate-100 rounded-full transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
@@ -221,24 +221,24 @@ function Home() {
         {!isMobile && (
           <>
             <motion.div style={{ y: bgOrb1Y }} className="absolute top-1/4 left-1/4 w-64 h-64 pointer-events-none">
-              <motion.div 
-                animate={{ y: [0, -30, 0], opacity: [0.3, 0.6, 0.3] }} 
+              <motion.div
+                animate={{ y: [0, -30, 0], opacity: [0.3, 0.6, 0.3] }}
                 transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
                 className="w-full h-full bg-rose/40 rounded-full blur-3xl"
               />
             </motion.div>
-            
+
             <motion.div style={{ y: bgOrb2Y }} className="absolute bottom-1/4 right-1/3 w-80 h-80 pointer-events-none">
-              <motion.div 
-                animate={{ y: [0, 40, 0], opacity: [0.2, 0.5, 0.2] }} 
+              <motion.div
+                animate={{ y: [0, 40, 0], opacity: [0.2, 0.5, 0.2] }}
                 transition={{ repeat: Infinity, duration: 8, ease: "easeInOut", delay: 1 }}
                 className="w-full h-full bg-mint/40 rounded-full blur-3xl"
               />
             </motion.div>
-            
+
             <motion.div style={{ y: bgOrb3Y }} className="absolute top-1/3 right-1/4 w-56 h-56 pointer-events-none">
-              <motion.div 
-                animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0], opacity: [0.2, 0.4, 0.2] }} 
+              <motion.div
+                animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0], opacity: [0.2, 0.4, 0.2] }}
                 transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
                 className="w-full h-full bg-peach/30 rounded-full blur-3xl"
               />
@@ -259,22 +259,22 @@ function Home() {
                 }
               }}
             >
-              <motion.h1 
+              <motion.h1
                 className="font-script text-[3rem] leading-[1.1] sm:text-6xl lg:text-[6.5rem] font-bold text-slate-950 mb-4 sm:mb-8 tracking-tight flex flex-col"
               >
                 <motion.span variants={{ hidden: { opacity: 0, y: isMobile ? 20 : 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>Your Story,</motion.span>
                 <motion.span variants={{ hidden: { opacity: 0, y: isMobile ? 20 : 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>Beautifully</motion.span>
                 <motion.span variants={{ hidden: { opacity: 0, y: isMobile ? 20 : 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }} className="text-slate-900">Unfurled.</motion.span>
               </motion.h1>
-              
-              <motion.p 
+
+              <motion.p
                 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
                 className="text-lg sm:text-xl md:text-2xl text-slate-800 mb-6 sm:mb-8 text-narrative max-w-xl font-bold italic mx-auto lg:mx-0"
               >
-                Capturing Your Love Story â€” from pre-wedding dreams to newborn smiles
+                Capturing Your Love Story- from pre-wedding dreams to newborn smiles
               </motion.p>
-              
-              <motion.div 
+
+              <motion.div
                 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
                 className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start items-center"
               >
@@ -285,9 +285,9 @@ function Home() {
               </motion.div>
             </motion.div>
           </motion.div>
-          
+
           <motion.div style={{ y: imageY }} className="flex-1 relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-md lg:max-w-xl lg:-mt-12 order-2 lg:order-2 mb-4 lg:mb-0">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
               animate={{ opacity: 1, scale: 1, rotate: 2 }}
               transition={{ duration: isMobile ? 0.8 : 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
@@ -300,9 +300,9 @@ function Home() {
               >
                 {/* Decorative backdrop glow for the image */}
                 <div className="absolute inset-0 bg-white/40 blur-3xl rounded-full transform scale-125 -z-10"></div>
-                
+
                 {/* Secondary Smaller Card on the Left */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, scale: 0.8, rotate: -15, x: 20 }}
                   animate={{ opacity: 1, scale: 1, rotate: -10, x: 0 }}
                   transition={{ duration: isMobile ? 0.8 : 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
@@ -310,11 +310,11 @@ function Home() {
                 >
                   <div className={`book-shape-1 p-2 sm:p-3 shadow-2xl border-4 border-white ${isMobile ? 'bg-white' : 'bg-white/80 backdrop-blur-md'}`}>
                     <div className="aspect-[3/4] overflow-hidden book-shape-1 border-2 border-white shadow-inner">
-                       <img 
-                        src={smallHero} 
+                      <img
+                        src={smallHero}
                         srcSet={`${smallHeroMobile} 400w, ${smallHero} 800w`}
                         sizes="(max-width: 640px) 160px, 200px"
-                        alt="Supporting showcase" 
+                        alt="Supporting showcase"
                         className="w-full h-full object-cover"
                         referrerPolicy="no-referrer"
                       />
@@ -323,17 +323,17 @@ function Home() {
                 </motion.div>
 
                 <div className={`book-shape-3 p-3 sm:p-6 lg:p-8 shadow-2xl border-4 border-white relative z-10 ${isMobile ? 'bg-white' : 'bg-white/60 backdrop-blur-sm'}`}>
-                   <img 
-                    src={bigHero} 
+                  <img
+                    src={bigHero}
                     srcSet={`${bigHeroMobile} 500w, ${bigHero} 1200w`}
                     sizes="(max-width: 768px) 100vw, 800px"
-                    alt="Whimsical couple illustration" 
+                    alt="Whimsical couple illustration"
                     className="w-full h-auto book-shape-3 object-cover shadow-inner"
                     referrerPolicy="no-referrer"
                   />
-                  
+
                   {/* Floating badge */}
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: isMobile ? 0.3 : 1.5, type: "spring", stiffness: 200, damping: 15 }}
@@ -351,7 +351,7 @@ function Home() {
       {/* 3. Services Section */}
       <section id="services" className="py-10 md:py-14 unifying-bg overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: isMobile ? 20 : 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -365,7 +365,7 @@ function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 items-start">
             {SERVICES.map((service, index) => (
-              <motion.div 
+              <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: isMobile ? 20 : 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -377,11 +377,11 @@ function Home() {
                   <service.icon size={28} strokeWidth={2.5} />
                 </div>
                 <div className={`aspect-[4/3] sm:aspect-[3/4] overflow-hidden ${service.shape} mb-6 border-4 border-white/80 shadow-inner bg-white/40 flex items-center justify-center`}>
-                  <img 
-                    src={service.img} 
+                  <img
+                    src={service.img}
                     srcSet={`${service.imgMobile} 500w, ${service.img} 1000w`}
                     sizes="(max-width: 768px) 100vw, 400px"
-                    alt={service.title} 
+                    alt={service.title}
                     loading="lazy"
                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
                     referrerPolicy="no-referrer"
@@ -405,16 +405,16 @@ function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: isMobile ? 20 : 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex flex-col md:flex-row items-center md:items-baseline justify-between mb-4 md:mb-6 gap-6 md:gap-8 text-center md:text-left"
           >
-              <div className="space-y-1">
-                <h2 className="font-script text-4xl sm:text-5xl md:text-8xl text-slate-950">A Gallery of Tales</h2>
-                <div className="h-1.5 w-20 sm:w-24 bg-accent-pink rounded-full mx-auto md:mx-0"></div>
-              </div>
+            <div className="space-y-1">
+              <h2 className="font-script text-4xl sm:text-5xl md:text-8xl text-slate-950">A Gallery of Tales</h2>
+              <div className="h-1.5 w-20 sm:w-24 bg-accent-pink rounded-full mx-auto md:mx-0"></div>
+            </div>
             <p className="text-slate-700 italic max-w-md text-lg md:text-xl border-l-4 border-lavender pl-6 hidden md:block font-bold">
               Every portrait is a unique volume in our grand library of lives...
             </p>
@@ -422,7 +422,7 @@ function Home() {
         </div>
 
         {/* Suspended Horizontal Gallery */}
-        <div 
+        <div
           ref={scrollRef}
           onMouseDown={handleMouseDown}
           onMouseLeave={handleMouseLeave}
@@ -434,7 +434,7 @@ function Home() {
           <div className="flex items-start gap-8 md:gap-20 px-6 md:px-[8vw] pt-24 pb-4 md:pb-8 min-w-max relative group select-none">
             {/* Single Continuous Horizontal Thread - Lifted to align with hooks */}
             <div className="absolute top-[54px] left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-slate-300 to-transparent z-10"></div>
-            <motion.div 
+            <motion.div
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -459,14 +459,14 @@ function Home() {
               </div>
               <div className="bg-lavender p-4 book-shape-1 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-1 border-4 border-white shadow-inner">
-                   <img 
-                    src={port1} 
+                  <img
+                    src={port1}
                     srcSet={`${port1Mobile} 400w, ${port1} 800w`}
                     sizes="(max-width: 768px) 280px, 380px"
-                    alt="Portrait" 
-                    className="w-full h-full object-cover" 
-                    draggable={false} 
-                    loading="lazy" 
+                    alt="Portrait"
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                    loading="lazy"
                   />
                 </div>
                 <div className="mt-4 text-center">
@@ -475,7 +475,7 @@ function Home() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -496,14 +496,14 @@ function Home() {
               </div>
               <div className="bg-mint p-4 book-shape-2 shadow-xl border-2 border-white/50">
                 <div className="aspect-square overflow-hidden book-shape-2 border-4 border-white shadow-inner">
-                   <img 
-                    src={port2} 
+                  <img
+                    src={port2}
                     srcSet={`${port2Mobile} 400w, ${port2} 800w`}
                     sizes="(max-width: 768px) 280px, 380px"
-                    alt="Abstract" 
-                    className="w-full h-full object-cover" 
-                    draggable={false} 
-                    loading="lazy" 
+                    alt="Abstract"
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                    loading="lazy"
                   />
                 </div>
                 <div className="mt-4 text-center">
@@ -512,7 +512,7 @@ function Home() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -532,14 +532,14 @@ function Home() {
               </div>
               <div className="bg-peach p-4 book-shape-3 shadow-xl border-2 border-white/50">
                 <div className="aspect-[4/5] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
-                   <img 
-                    src={port3} 
+                  <img
+                    src={port3}
                     srcSet={`${port3Mobile} 400w, ${port3} 800w`}
                     sizes="(max-width: 768px) 280px, 380px"
-                    alt="Portrait" 
-                    className="w-full h-full object-cover" 
-                    draggable={false} 
-                    loading="lazy" 
+                    alt="Portrait"
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                    loading="lazy"
                   />
                 </div>
                 <div className="mt-4 text-center">
@@ -548,7 +548,7 @@ function Home() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -568,14 +568,14 @@ function Home() {
               </div>
               <div className="bg-rose p-4 book-shape-1 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-1 border-4 border-white shadow-inner">
-                   <img 
-                    src={port4} 
+                  <img
+                    src={port4}
                     srcSet={`${port4Mobile} 400w, ${port4} 800w`}
                     sizes="(max-width: 768px) 280px, 380px"
-                    alt="The Meeting" 
-                    className="w-full h-full object-cover" 
-                    draggable={false} 
-                    loading="lazy" 
+                    alt="The Meeting"
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                    loading="lazy"
                   />
                 </div>
                 <div className="mt-4 text-center">
@@ -584,7 +584,7 @@ function Home() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -604,14 +604,14 @@ function Home() {
               </div>
               <div className="bg-sky p-4 book-shape-3 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
-                   <img 
-                    src={port5} 
+                  <img
+                    src={port5}
                     srcSet={`${port5Mobile} 400w, ${port5} 800w`}
                     sizes="(max-width: 768px) 280px, 380px"
-                    alt="Landscape" 
-                    className="w-full h-full object-cover" 
-                    draggable={false} 
-                    loading="lazy" 
+                    alt="Landscape"
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                    loading="lazy"
                   />
                 </div>
                 <div className="mt-4 text-center">
@@ -620,7 +620,7 @@ function Home() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -641,14 +641,14 @@ function Home() {
               </div>
               <div className="bg-lavender p-4 book-shape-2 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-2 border-4 border-white shadow-inner">
-                   <img 
-                    src={port6} 
+                  <img
+                    src={port6}
                     srcSet={`${port6Mobile} 400w, ${port6} 800w`}
                     sizes="(max-width: 768px) 280px, 380px"
-                    alt="Wedding" 
-                    className="w-full h-full object-cover" 
-                    draggable={false} 
-                    loading="lazy" 
+                    alt="Wedding"
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                    loading="lazy"
                   />
                 </div>
                 <div className="mt-4 text-center">
@@ -657,7 +657,7 @@ function Home() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -677,14 +677,14 @@ function Home() {
               </div>
               <div className="bg-sky p-4 book-shape-3 shadow-xl border-2 border-white/50">
                 <div className="aspect-[3/4] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
-                   <img 
-                    src={port7} 
+                  <img
+                    src={port7}
                     srcSet={`${port7Mobile} 400w, ${port7} 800w`}
                     sizes="(max-width: 768px) 280px, 380px"
-                    alt="Final Portrait" 
-                    className="w-full h-full object-cover" 
-                    draggable={false} 
-                    loading="lazy" 
+                    alt="Final Portrait"
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                    loading="lazy"
                   />
                 </div>
                 <div className="mt-4 text-center">
@@ -699,7 +699,7 @@ function Home() {
       {/* 5. Client Testimonials */}
       <section id="testimonials" className="pt-2 pb-10 md:py-14 watercolor-bg overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center mb-6">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -710,17 +710,17 @@ function Home() {
         </div>
 
         <div className="relative flex overflow-hidden group py-4 md:py-8">
-          <motion.div 
+          <motion.div
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ 
-              duration: isMobile ? 60 : 40, 
-              repeat: Infinity, 
-              ease: "linear" 
+            transition={{
+              duration: isMobile ? 60 : 40,
+              repeat: Infinity,
+              ease: "linear"
             }}
             className="flex gap-6 sm:gap-8 px-4 whitespace-nowrap"
           >
             {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 whileHover={{ rotateX: 10, rotateY: 10, scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -728,9 +728,9 @@ function Home() {
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-lavender overflow-hidden p-0.5 bg-white">
-                    <img 
-                      src={t.avatar} 
-                      alt={t.name} 
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
                       className="w-full h-full object-cover rounded-full"
                       referrerPolicy="no-referrer"
                     />
@@ -750,7 +750,7 @@ function Home() {
                 <p className="text-base md:text-lg font-script text-slate-800 italic leading-relaxed font-bold">
                   "{t.text}"
                 </p>
-                
+
                 {/* Decorative shape */}
                 <div className="absolute top-4 right-4 text-mint opacity-10 pointer-events-none">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
@@ -773,7 +773,7 @@ function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center mb-10 md:mb-14">
             {/* Left: Compelling Copy */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -781,15 +781,15 @@ function Home() {
             >
               <div className="space-y-3">
                 <h2 className="font-script text-4xl sm:text-5xl md:text-7xl text-slate-950 leading-tight">
-                  Unfurl Your <br/>Own Tale
+                  Unfurl Your <br />Own Tale
                 </h2>
                 <div className="h-1 w-24 bg-accent-pink rounded-full mx-auto lg:mx-0"></div>
               </div>
-              
+
               <p className="text-slate-800 text-base md:text-xl font-bold italic leading-relaxed max-w-lg mx-auto lg:mx-0">
                 "Every love story is a masterpiece waiting to be painted. Our anthology has room for one more. Shall we begin yours?"
               </p>
- 
+
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-2">
                 <Link to="/services" className="bg-accent-pink hover:bg-white border-4 border-accent-pink text-white hover:text-accent-pink px-6 sm:px-8 md:px-10 py-3 md:py-4 rounded-full font-bold text-base transition-all shadow-2xl hover:scale-105 hover:shadow-accent-pink/50 active:scale-95">
                   Open Your Book
@@ -801,7 +801,7 @@ function Home() {
             </motion.div>
 
             {/* Right: Gorgeous Image Card */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -817,32 +817,32 @@ function Home() {
                 </div>
 
                 <TiltCard className="relative z-10 max-w-[280px] md:max-w-xs">
-                  <motion.div 
+                  <motion.div
                     initial={{ rotate: 2 }}
-                    animate={isMobile ? { rotate: 0, y: 0 } : { 
+                    animate={isMobile ? { rotate: 0, y: 0 } : {
                       rotate: [2, -1, 2],
                       y: [3, -3, 3]
                     }}
-                    transition={{ 
-                      repeat: Infinity, 
-                      duration: isMobile ? 15 : 10, 
-                      ease: "easeInOut" 
+                    transition={{
+                      repeat: Infinity,
+                      duration: isMobile ? 15 : 10,
+                      ease: "easeInOut"
                     }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.05,
                       transition: { type: "spring", stiffness: 300, damping: 20 }
                     }}
                     className="bg-white p-3 md:p-4 book-shape-1 shadow-2xl border-2 border-white/50 preserve-3d"
                   >
                     <div className="aspect-[4/5] overflow-hidden book-shape-1 border-4 md:border-6 border-white shadow-inner relative">
-                       <img 
-                        src={port7} 
+                      <img
+                        src={port7}
                         srcSet={`${port7Mobile} 400w, ${port7} 800w`}
                         sizes="(max-width: 768px) 100vw, 380px"
-                        alt="Final Masterpiece" 
+                        alt="Final Masterpiece"
                         loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-                        referrerPolicy="no-referrer" 
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        referrerPolicy="no-referrer"
                       />
                       {/* Hover Overlay */}
                       <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-6 text-center">
@@ -863,9 +863,9 @@ function Home() {
         {/* 7. Refined Footer */}
         <Footer />
       </section>
-      </div>
-    );
-  }
+    </div>
+  );
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation();
