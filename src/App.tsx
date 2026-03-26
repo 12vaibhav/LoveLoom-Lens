@@ -419,8 +419,8 @@ function Home() {
             {/* Single Continuous Horizontal Thread - Lifted to align with hooks */}
             <div className="absolute top-[54px] left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-slate-300 to-transparent z-10"></div>
             <motion.div 
-              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={isMobile ? false : { opacity: 0, scale: 0.9 }}
+              whileInView={isMobile ? {} : { opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-1, 1, -1], x: [-2.5, 2.5, -2.5] }}
               transition={{ delay: 0.1, rotate: { repeat: Infinity, duration: isMobile ? 12 : 8, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 10, ease: "easeInOut" } }}
@@ -452,8 +452,8 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={isMobile ? false : { opacity: 0, scale: 0.9 }}
+              whileInView={isMobile ? {} : { opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [1, -1, 1], x: [2, -2, 2] }}
               transition={{ delay: 0.2, rotate: { repeat: Infinity, duration: isMobile ? 12 : 7, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 9, ease: "easeInOut" } }}
@@ -481,8 +481,8 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={isMobile ? false : { opacity: 0, scale: 0.9 }}
+              whileInView={isMobile ? {} : { opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-0.8, 0.8, -0.8], x: [-3, 3, -3] }}
               transition={{ delay: 0.4, rotate: { repeat: Infinity, duration: isMobile ? 12 : 9, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 11, ease: "easeInOut" } }}
@@ -509,8 +509,8 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={isMobile ? false : { opacity: 0, scale: 0.9 }}
+              whileInView={isMobile ? {} : { opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [0.7, -0.7, 0.7], x: [2.5, -2.5, 2.5] }}
               transition={{ delay: 0.1, rotate: { repeat: Infinity, duration: isMobile ? 12 : 7.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 9.5, ease: "easeInOut" } }}
@@ -537,8 +537,8 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={isMobile ? false : { opacity: 0, scale: 0.9 }}
+              whileInView={isMobile ? {} : { opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-1.2, 1.2, -1.2], x: [-4, 4, -4] }}
               transition={{ delay: 0.3, rotate: { repeat: Infinity, duration: isMobile ? 12 : 8.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: 10.5, ease: "easeInOut" } }}
@@ -565,8 +565,8 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={isMobile ? false : { opacity: 0, scale: 0.9 }}
+              whileInView={isMobile ? {} : { opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [0.9, -0.9, 0.9], x: [3.5, -3.5, 3.5] }}
               transition={{ delay: 0.5, rotate: { repeat: Infinity, duration: isMobile ? 12 : 6.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 8.5, ease: "easeInOut" } }}
@@ -594,8 +594,8 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={isMobile ? false : { opacity: 0, scale: 0.9 }}
+              whileInView={isMobile ? {} : { opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               animate={isMobile ? { rotate: 0, x: 0 } : { rotate: [-0.6, 0.6, -0.6], x: [-3, 3, -3] }}
               transition={{ delay: 0.2, rotate: { repeat: Infinity, duration: isMobile ? 12 : 8, ease: "easeInOut" }, x: { repeat: Infinity, duration: isMobile ? 15 : 10, ease: "easeInOut" } }}
