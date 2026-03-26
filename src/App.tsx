@@ -153,7 +153,7 @@ function Home() {
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="max-w-6xl mx-auto flex items-center justify-between bg-white/70 backdrop-blur-md rounded-full px-6 sm:px-8 py-3 border border-lavender shadow-sm"
+          className={`max-w-6xl mx-auto flex items-center justify-between rounded-full px-6 sm:px-8 py-3 border border-lavender shadow-sm ${isMobile ? 'bg-white' : 'bg-white/70 backdrop-blur-md'}`}
         >
           <a href="/" className="text-2xl md:text-3xl font-script font-bold text-slate-950">
             LoveLoom Lens
@@ -193,7 +193,7 @@ function Home() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-4 right-4 mt-2 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-lavender p-4 flex flex-col gap-2 md:hidden z-50"
+              className={`absolute top-full left-4 right-4 mt-2 rounded-2xl shadow-xl border border-lavender p-4 flex flex-col gap-2 md:hidden z-50 ${isMobile ? 'bg-white' : 'bg-white/95 backdrop-blur-xl'}`}
             >
               <Link to="/" className="text-slate-800 font-bold hover:bg-lavender/50 rounded-xl px-4 py-3 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
               <Link to="/about" className="text-slate-800 font-bold hover:bg-lavender/50 rounded-xl px-4 py-3 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
@@ -299,7 +299,7 @@ function Home() {
                   transition={{ duration: isMobile ? 0.8 : 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
                   className="absolute -left-8 sm:-left-16 md:-left-24 top-1/3 -translate-y-1/2 w-[110px] sm:w-[160px] md:w-[200px] z-20"
                 >
-                  <div className="book-shape-1 bg-white/80 p-2 sm:p-3 shadow-2xl border-4 border-white backdrop-blur-md">
+                  <div className={`book-shape-1 p-2 sm:p-3 shadow-2xl border-4 border-white ${isMobile ? 'bg-white' : 'bg-white/80 backdrop-blur-md'}`}>
                     <div className="aspect-[3/4] overflow-hidden book-shape-1 border-2 border-white shadow-inner">
                       <img 
                         src={smallHero} 
@@ -311,7 +311,7 @@ function Home() {
                   </div>
                 </motion.div>
 
-                <div className="book-shape-3 bg-white/60 p-3 sm:p-6 lg:p-8 shadow-2xl border-4 border-white backdrop-blur-sm relative z-10">
+                <div className={`book-shape-3 p-3 sm:p-6 lg:p-8 shadow-2xl border-4 border-white relative z-10 ${isMobile ? 'bg-white' : 'bg-white/60 backdrop-blur-sm'}`}>
                   <img 
                     src={bigHero} 
                     alt="Whimsical couple illustration" 
