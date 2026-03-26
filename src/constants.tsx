@@ -2,13 +2,14 @@ import React from 'react';
 
 import { Heart, Camera, Baby, Sparkles, Image as ImageIcon, Printer } from 'lucide-react';
 
+import weddingImg from './assets/services/wedding photo.webp';
+import preWeddingImg from './assets/services/Pre-wedding-photo.webp';
+import babyImg from './assets/services/baby-photo.webp';
+import modelingImg from './assets/services/modeling-photo.webp';
+import productImg from './assets/services/product-photo.webp';
+import printingImg from './assets/services/photo-printing.webp';
+
 export const IMAGES = {
-  hero: "https://lh3.googleusercontent.com/aida-public/AB6AXuBPduxQ8OKTH7kPBSoqGrpiIKZqSt_pAoO0l-7A5jqpbVbS4ORH2gbFjlmDEj0CBE4rJL0REIq0L7CghqVb-ODpPHbrvQEEmHavJPCf7hIY642v4Vyd0htrHYrQKFqPkMC6Xpx62ee-RTA29q_cGt-vJ2GTqFrrtF3zyBNd_It7tjE_O930SI0bV9jySTNTYtTQfGmKBDInkY6BqBc7nYwyeW72nHFMJfwEwLOg2fHdUw9USTNkqgcLwbgPkOT7URh-bynY7JSyPbo",
-  weddingBack: "https://lh3.googleusercontent.com/aida-public/AB6AXuD03zjvtEwlbUqQWgV_izckPmXL3m-D_upWB3k_jwbYqg8TOeXWKdmbCM4XUIhWJEqZGvT7TUT6aASyhLQ7-VOi3D8wb53ir3loFqJv6_InC1Oo6rSOHsu7ENiwIC7w834vSzq41dqZMNoIdnEQQUlZKOIp0uf1JS5tCF2sWBQ2KqXBpAtgldnqnZvun-3f-jVGbNVxN_DG_t4rbe5zA6cqSrbY6Z_7uLlDpDOEvyhADmZ3cRe-wzdAIkr5aEHgtkW8CI-uvFNt-lg",
-  abstract: "https://lh3.googleusercontent.com/aida-public/AB6AXuCGve6glMMdwVvKP2Na6znjUKscv8iBPtKDLxjRy_WrGlqZFTzvm9lJylvSgDccSRE-KHB5d2p1jUpuMUtAxCFIiD6MrGK0-UOpCx_N2wrdpDhOFZuzzlTmXmbgWxwHyXdSeKp9i1q1QMpkhg6-ZxDVYphRvyVk0fM4mpwaN3_hJZ1WWta3ze6hBTVDbOzAMy6EsqM5KC3byfd4WODvkPT9Xh1GaFqnc9Q7hY4TJyBSGKft-c0ZmQrtYHtnGDTuzZBETALr01w9fH8",
-  portrait: "https://lh3.googleusercontent.com/aida-public/AB6AXuCgI_J49c0IY2nt0ph_s_k-kdN2uMY7_dEG85xwVQflmWVd5rSy6YCV0feXAvGgYjvIEpSmmC6xaZPJzTujM0KRD9YAzbjNo6-GPNrCvIiY2UT5_8rIXqIFpoy0xLgeaJM0M_DiithkANCNsBlRikER2sPL5IomLe7pExBAkQO6KgDSvz56nkZp1UNeB4pWNMkYNEU3KYvoPZkxxBY2eyW-u4Y8E15wgUftC4ivoknRU0f0eFiJk6YKUeIo0VahlqzyWWcOPd0MV9Y",
-  portraitDark: "https://lh3.googleusercontent.com/aida-public/AB6AXuDEVG_f3Qu7j6e-sL83OD8Z4eipg3BIqT4cOlACzcERg3aAlEO64eNWhOS9-0Anhso_dJuKojW5fyIXyvFpD249FEwFAfBkyPnWdr8U-qy1wPTfJMOeBbAtr6TfToTL8oXzvORCvpsUHCBoDhzP3hCcP9Rq7njd0SK5ilNIrUI_POgqrwEBS6dAUpIjd6YZQqtjDIMaUwaeeoKZmV7MD9OSP5N41JKq6e81WUjUt6rLMy_r1Ut8IfizejqPpC_1QCkVbbbSlE9D9sw",
-  landscape: "https://lh3.googleusercontent.com/aida-public/AB6AXuCG8TpsGgTr1__5n4Or4FKZl6LlANdBzZ1IPuWyj8WutfUhCVubXocVVks8tVlbLTcgQOJCl18S9t0ZcxAsrlaTR__skZ-LbyMkqngLlqY_DPnfBrYQEkfudCCECibrxBqqHAkIPdn8Hcd8iKnzarrGI4avis9WBQ6O63zt6171wHRO5rSm3d2k4cr0uWpTkczh7khr3r4MHOxutp6LIomkl2DKNS_Jtv3zQ32XZDLokoM2uKhplWCPfADBQy_vcpwsCWH2BZ2ncZ8",
   avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuCDOIo5rUMQoxGET5r4cUbZAub4chGLQIFzE9HaTLm-Edn3XYjsEW4ByVg6DowoslfvwPFxnqHZsSQSpCKufa-7EXfcdW_GuYfiLY-aYmDpCKYVIneZBhT--0AfXNXD4qLm3gIwvQl9TRFbrxYwn-6V-W00a-r-FsyAWeYgYhSDmy1SyH-SD3ejC9xwIxBIDKIwItrS8ZQVK9dY-utju351l5uQkybMCu8taCBZijcS9dTEiyZI50PRsxyeaULU96l7LR1EHJbJGDo"
 };
 
@@ -20,7 +21,7 @@ export const SERVICES = [
     color: 'bg-rose', 
     iconColor: 'text-pink-600',
     shape: 'book-shape-1', 
-    img: IMAGES.weddingBack 
+    img: weddingImg 
   },
   { 
     title: 'Pre-Wedding Shoot', 
@@ -29,7 +30,7 @@ export const SERVICES = [
     color: 'bg-sky', 
     iconColor: 'text-blue-600',
     shape: 'book-shape-2', 
-    img: IMAGES.landscape 
+    img: preWeddingImg 
   },
   { 
     title: 'Newborn Baby', 
@@ -38,7 +39,7 @@ export const SERVICES = [
     color: 'bg-mint', 
     iconColor: 'text-emerald-600',
     shape: 'book-shape-3', 
-    img: IMAGES.abstract 
+    img: babyImg 
   },
   { 
     title: 'Candid & Modeling', 
@@ -47,7 +48,7 @@ export const SERVICES = [
     color: 'bg-lavender', 
     iconColor: 'text-purple-600',
     shape: 'book-shape-1', 
-    img: IMAGES.portrait 
+    img: modelingImg 
   },
   { 
     title: 'Product Photography', 
@@ -56,7 +57,7 @@ export const SERVICES = [
     color: 'bg-peach', 
     iconColor: 'text-orange-600',
     shape: 'book-shape-2', 
-    img: IMAGES.portraitDark 
+    img: productImg 
   },
   { 
     title: 'Photo Printing', 
@@ -65,7 +66,7 @@ export const SERVICES = [
     color: 'bg-rose', 
     iconColor: 'text-rose-600',
     shape: 'book-shape-3', 
-    img: IMAGES.hero 
+    img: printingImg 
   },
 ];
 

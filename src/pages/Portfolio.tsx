@@ -8,16 +8,29 @@ import {
   Image as ImageIcon, 
   Printer, 
   X, 
-  ChevronRight, 
   ArrowRight,
-  Facebook,
-  Instagram,
   Plus,
   Menu
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { IMAGES, WhatsappIcon } from '../constants';
+
+import weddingImg from '../assets/services/wedding photo.webp';
+import preWeddingImg from '../assets/services/Pre-wedding-photo.webp';
+import babyImg from '../assets/services/baby-photo.webp';
+import modelingImg from '../assets/services/modeling-photo.webp';
+import productImg from '../assets/services/product-photo.webp';
+import printingImg from '../assets/services/photo-printing.webp';
+import bigHero from '../assets/hero/big-image-card.webp';
+import smallHero from '../assets/hero/small-image-card.webp';
+import port1 from '../assets/portfolio/portfolio-1.webp';
+import port2 from '../assets/portfolio/portfolio-2.webp';
+import port3 from '../assets/portfolio/portfolio-3.webp';
+import port4 from '../assets/portfolio/portfolio-4.webp';
+import port5 from '../assets/portfolio/portfolio-5.webp';
+import port6 from '../assets/portfolio/portfolio-6.webp';
+import port7 from '../assets/portfolio/portfolio-7.webp';
 
 // Reusable Tilt Component
 const TiltCard = ({ children, className, onClick }: { children: React.ReactNode, className?: string, onClick?: () => void }) => {
@@ -77,21 +90,21 @@ const CATEGORIES = [
 ];
 
 const PORTFOLIO_IMAGES = [
-  { id: 1, category: 'wedding', src: IMAGES.weddingBack, title: 'Ethereal Vows', size: 'tall' },
-  { id: 2, category: 'pre-wedding', src: IMAGES.landscape, title: 'Golden Hour Love', size: 'wide' },
-  { id: 3, category: 'newborn', src: IMAGES.abstract, title: 'Pure Innocence', size: 'square' },
-  { id: 4, category: 'candid', src: IMAGES.portrait, title: 'Authentic Smile', size: 'tall' },
-  { id: 5, category: 'product', src: IMAGES.portraitDark, title: 'Shadow & Light', size: 'square' },
-  { id: 6, category: 'printing', src: IMAGES.hero, title: 'Printed Legacy', size: 'wide' },
-  { id: 7, category: 'wedding', src: 'https://picsum.photos/seed/wedding1/800/1200', title: 'Intimate Moments', size: 'tall' },
-  { id: 8, category: 'pre-wedding', src: 'https://picsum.photos/seed/prewedding1/1200/800', title: 'Mountain Romance', size: 'wide' },
-  { id: 9, category: 'newborn', src: 'https://picsum.photos/seed/baby1/800/800', title: 'Tiny Toes', size: 'square' },
-  { id: 10, category: 'candid', src: 'https://picsum.photos/seed/candid1/800/1200', title: 'Street Magic', size: 'tall' },
-  { id: 11, category: 'product', src: 'https://picsum.photos/seed/product1/800/800', title: 'Elegance Redefined', size: 'square' },
-  { id: 12, category: 'printing', src: 'https://picsum.photos/seed/print1/1200/800', title: 'Archival Beauty', size: 'wide' },
-  { id: 13, category: 'wedding', src: 'https://picsum.photos/seed/wedding2/800/1200', title: 'The First Dance', size: 'tall' },
-  { id: 14, category: 'pre-wedding', src: 'https://picsum.photos/seed/prewedding2/1200/800', title: 'Lakeside Dreams', size: 'wide' },
-  { id: 15, category: 'newborn', src: 'https://picsum.photos/seed/baby2/800/800', title: 'Soft Slumber', size: 'square' },
+  { id: 1, category: 'wedding', src: weddingImg, title: 'Ethereal Vows', size: 'tall' },
+  { id: 2, category: 'pre-wedding', src: preWeddingImg, title: 'Golden Hour Love', size: 'wide' },
+  { id: 3, category: 'newborn', src: babyImg, title: 'Pure Innocence', size: 'square' },
+  { id: 4, category: 'candid', src: modelingImg, title: 'Authentic Smile', size: 'tall' },
+  { id: 5, category: 'product', src: productImg, title: 'Shadow & Light', size: 'square' },
+  { id: 6, category: 'printing', src: printingImg, title: 'Printed Legacy', size: 'wide' },
+  { id: 7, category: 'wedding', src: port1, title: 'Intimate Moments', size: 'tall' },
+  { id: 8, category: 'pre-wedding', src: port2, title: 'Mountain Romance', size: 'wide' },
+  { id: 9, category: 'newborn', src: port3, title: 'Tiny Toes', size: 'square' },
+  { id: 10, category: 'candid', src: port4, title: 'Street Magic', size: 'tall' },
+  { id: 11, category: 'product', src: port5, title: 'Elegance Redefined', size: 'square' },
+  { id: 12, category: 'printing', src: port6, title: 'Archival Beauty', size: 'wide' },
+  { id: 13, category: 'wedding', src: port7, title: 'The First Dance', size: 'tall' },
+  { id: 14, category: 'pre-wedding', src: bigHero, title: 'Lakeside Dreams', size: 'wide' },
+  { id: 15, category: 'newborn', src: smallHero, title: 'Soft Slumber', size: 'square' },
 ];
 
 export default function Portfolio() {

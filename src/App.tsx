@@ -6,19 +6,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from 'motion/react';
 import { 
-  Heart, 
-  Camera, 
-  Baby, 
   Sparkles, 
-  Image as ImageIcon, 
-  Printer, 
   Quote, 
-  Facebook, 
-  Instagram, 
-  ChevronRight,
-  ArrowRight,
-  Play,
-  Menu,
+  Menu, 
   X
 } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
@@ -28,6 +18,15 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Footer from './components/Footer';
 import { IMAGES, WhatsappIcon, SERVICES, TESTIMONIALS } from './constants';
+import bigHero from './assets/hero/big-image-card.webp';
+import smallHero from './assets/hero/small-image-card.webp';
+import port1 from './assets/portfolio/portfolio-1.webp';
+import port2 from './assets/portfolio/portfolio-2.webp';
+import port3 from './assets/portfolio/portfolio-3.webp';
+import port4 from './assets/portfolio/portfolio-4.webp';
+import port5 from './assets/portfolio/portfolio-5.webp';
+import port6 from './assets/portfolio/portfolio-6.webp';
+import port7 from './assets/portfolio/portfolio-7.webp';
 
 
 const TiltCard = ({ children, className }: { children: React.ReactNode, className?: string }) => {
@@ -78,6 +77,14 @@ const TiltCard = ({ children, className }: { children: React.ReactNode, classNam
 function Home() {
   const { scrollY } = useScroll();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   const shareOnFacebook = () => {
     const url = encodeURIComponent(window.location.href);
@@ -100,6 +107,40 @@ function Home() {
   const bgOrb3Y = useTransform(scrollY, [0, 1000], [0, 100]);
   const textY = useTransform(scrollY, [0, 1000], [0, 120]);
   const imageY = useTransform(scrollY, [0, 1000], [0, 40]);
+
+  // Drag-to-scroll logic for Portfolio
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeftValue, setScrollLeftValue] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    // Use pageX to handle dragging properly
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeftValue(scrollRef.current.scrollLeft);
+    // Disable smooth scroll for instant feedback during drag
+    scrollRef.current.style.scrollBehavior = 'auto';
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    if (scrollRef.current) scrollRef.current.style.scrollBehavior = 'smooth';
+  };
+  
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    if (scrollRef.current) scrollRef.current.style.scrollBehavior = 'smooth';
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Increased factor for better responsiveness
+    scrollRef.current.scrollLeft = scrollLeftValue - walk;
+  };
 
   return (
     <div className="min-h-screen selection:bg-accent-pink/30 overflow-x-hidden">
@@ -164,7 +205,7 @@ function Home() {
       </nav>
 
       {/* 2. Hero Section */}
-      <section className="relative min-h-screen w-full flex items-center justify-center pt-28 md:pt-32 pb-16 md:pb-24 overflow-hidden watercolor-bg">
+      <section className="relative min-h-screen w-full flex items-center justify-center pt-20 md:pt-28 pb-10 md:pb-14 overflow-hidden watercolor-bg">
         {/* Decorative Floating Background Elements with Parallax */}
         <motion.div style={{ y: bgOrb1Y }} className="absolute top-1/4 left-1/4 w-64 h-64 pointer-events-none">
           <motion.div 
@@ -191,7 +232,7 @@ function Home() {
         </motion.div>
 
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 md:gap-16 lg:gap-32 px-4 sm:px-6 text-center lg:text-left">
-          <motion.div style={{ y: textY }} className="flex-[1.2] z-10 lg:pr-12 order-2 lg:order-1">
+          <motion.div style={{ y: textY }} className="flex-[1.2] z-10 lg:pr-12 order-1 lg:order-1">
             <motion.div
               initial="hidden"
               animate="show"
@@ -204,7 +245,7 @@ function Home() {
               }}
             >
               <motion.h1 
-                className="font-script text-[3.5rem] leading-none sm:text-6xl lg:text-[6.5rem] font-bold text-slate-950 mb-6 sm:mb-8 tracking-tight flex flex-col"
+                className="font-script text-[3rem] leading-[1.1] sm:text-6xl lg:text-[6.5rem] font-bold text-slate-950 mb-4 sm:mb-8 tracking-tight flex flex-col"
               >
                 <motion.span variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>Your Story,</motion.span>
                 <motion.span variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>Beautifully</motion.span>
@@ -213,9 +254,9 @@ function Home() {
               
               <motion.p 
                 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
-                className="text-lg sm:text-xl md:text-2xl text-slate-800 mb-10 sm:mb-12 text-narrative max-w-xl font-bold italic mx-auto lg:mx-0"
+                className="text-lg sm:text-xl md:text-2xl text-slate-800 mb-6 sm:mb-8 text-narrative max-w-xl font-bold italic mx-auto lg:mx-0"
               >
-                Capturing Your Love Story — from pre-wedding dreams to newborn smiles
+                Capturing Your Love Story â€” from pre-wedding dreams to newborn smiles
               </motion.p>
               
               <motion.div 
@@ -230,24 +271,43 @@ function Home() {
             </motion.div>
           </motion.div>
           
-          <motion.div style={{ y: imageY }} className="flex-1 relative w-full max-w-[260px] sm:max-w-[320px] md:max-w-md lg:max-w-xl lg:-mt-12 order-1 lg:order-2 mb-4 lg:mb-0">
+          <motion.div style={{ y: imageY }} className="flex-1 relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-md lg:max-w-xl lg:-mt-12 order-2 lg:order-2 mb-4 lg:mb-0">
             <motion.div 
               initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
               animate={{ opacity: 1, scale: 1, rotate: 2 }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+              transition={{ duration: isMobile ? 0.8 : 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
             >
               {/* Continuous Floating Animation Wrapper */}
               <motion.div
-                animate={{ y: [-15, 15, -15] }}
-                transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
+                animate={{ y: isMobile ? [-8, 8, -8] : [-15, 15, -15] }}
+                transition={{ repeat: Infinity, duration: isMobile ? 6 : 7, ease: "easeInOut" }}
                 className="relative"
               >
                 {/* Decorative backdrop glow for the image */}
                 <div className="absolute inset-0 bg-white/40 blur-3xl rounded-full transform scale-125 -z-10"></div>
                 
+                {/* Secondary Smaller Card on the Left */}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.8, rotate: -15, x: 20 }}
+                  animate={{ opacity: 1, scale: 1, rotate: -10, x: 0 }}
+                  transition={{ duration: isMobile ? 0.8 : 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+                  className="absolute -left-8 sm:-left-16 md:-left-24 top-1/3 -translate-y-1/2 w-[110px] sm:w-[160px] md:w-[200px] z-20"
+                >
+                  <div className="book-shape-1 bg-white/80 p-2 sm:p-3 shadow-2xl border-4 border-white backdrop-blur-md">
+                    <div className="aspect-[3/4] overflow-hidden book-shape-1 border-2 border-white shadow-inner">
+                      <img 
+                        src={smallHero} 
+                        alt="Supporting showcase" 
+                        className="w-full h-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+
                 <div className="book-shape-3 bg-white/60 p-3 sm:p-6 lg:p-8 shadow-2xl border-4 border-white backdrop-blur-sm relative z-10">
                   <img 
-                    src={IMAGES.hero} 
+                    src={bigHero} 
                     alt="Whimsical couple illustration" 
                     className="w-full h-auto book-shape-3 object-cover shadow-inner"
                     referrerPolicy="no-referrer"
@@ -270,15 +330,15 @@ function Home() {
       </section>
 
       {/* 3. Services Section */}
-      <section id="services" className="py-16 md:py-24 unifying-bg overflow-hidden">
+      <section id="services" className="py-10 md:py-14 unifying-bg overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-12 md:mb-20 text-center lg:text-left"
+            className="mb-8 md:mb-12 text-center lg:text-left"
           >
-            <h2 className="font-script text-4xl sm:text-5xl md:text-7xl text-slate-950 mb-4">Our Hand-Crafted Chapters</h2>
+            <h2 className="font-script text-4xl sm:text-5xl md:text-7xl text-slate-950 mb-3">Our Hand-Crafted Chapters</h2>
             <p className="text-slate-700 text-lg sm:text-xl font-bold max-w-xl italic mx-auto lg:mx-0">
               Dive into our curated anthology. Each service holds a different heartbeat, a different light, and a story waiting to be told.
             </p>
@@ -316,7 +376,7 @@ function Home() {
       </section>
 
       {/* 4. Featured Portfolio */}
-      <section id="portfolio" className="py-16 md:py-24 bg-white relative overflow-hidden">
+      <section id="portfolio" className="pt-10 pb-2 md:py-14 bg-white relative overflow-hidden">
         {/* Decorative background text */}
         <div className="absolute top-10 -right-20 text-[10rem] sm:text-[15rem] font-script text-slate-50 opacity-[0.03] select-none pointer-events-none rotate-12">
           Gallery
@@ -327,278 +387,239 @@ function Home() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col md:flex-row items-baseline justify-between mb-12 md:mb-24 gap-6 md:gap-8 text-center md:text-left"
+            className="flex flex-col md:flex-row items-center md:items-baseline justify-between mb-4 md:mb-6 gap-6 md:gap-8 text-center md:text-left"
           >
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <h2 className="font-script text-4xl sm:text-5xl md:text-8xl text-slate-950">A Gallery of Tales</h2>
-                <div className="h-1.5 w-24 sm:w-32 bg-accent-pink rounded-full mx-auto md:mx-0"></div>
+                <div className="h-1.5 w-20 sm:w-24 bg-accent-pink rounded-full mx-auto md:mx-0"></div>
               </div>
             <p className="text-slate-700 italic max-w-md text-lg md:text-xl border-l-4 border-lavender pl-6 hidden md:block font-bold">
-              Every portrait is a unique volume in our grand library of lives, suspended in a moment of pure magic.
+              Every portrait is a unique volume in our grand library of lives...
             </p>
           </motion.div>
+        </div>
 
-          {/* Suspended Horizontal Gallery Layout */}
-          <div className="flex flex-col gap-16 md:gap-32 relative">
-            
-            {/* Row 1 */}
-            <div className="relative flex flex-wrap md:flex-nowrap justify-center gap-10 md:gap-24 items-start">
-              {/* Horizontal Thread for Row 1 */}
-              <div className="absolute top-[-60px] left-[-15%] right-[-15%] h-[2px] bg-gradient-to-r from-transparent via-slate-300 to-transparent hidden md:block"></div>
-
-              {/* Card 1 */}
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                animate={{ 
-                  rotate: [-1, 1, -1],
-                  x: [-2, 2, -2]
-                }}
-                transition={{ 
-                  rotate: { repeat: Infinity, duration: 8, ease: "easeInOut" },
-                  x: { repeat: Infinity, duration: 10, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.02, rotate: 0 }}
-                className="relative z-10 w-full max-w-[280px] md:max-w-xs group cursor-pointer"
-              >
-                {/* Vertical Threads for Card 1 */}
-                <div className="absolute -top-[60px] left-1/4 w-px h-[60px] bg-slate-300 hidden md:block origin-top">
-                  <div className="absolute top-0 -left-1 w-2 h-2 bg-slate-400 rounded-full border border-white"></div>
+        {/* Suspended Horizontal Gallery */}
+        <div 
+          ref={scrollRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          className={`relative w-full overflow-x-auto no-scrollbar scroll-smooth cursor-grab active:cursor-grabbing select-none ${!isDragging ? 'snap-x snap-mandatory' : ''}`}
+        >
+          <div className="flex items-start gap-8 md:gap-20 px-6 md:px-[8vw] pt-24 pb-4 md:pb-8 min-w-max relative group select-none">
+            {/* Single Continuous Horizontal Thread - Lifted to align with hooks */}
+            <div className="absolute top-[54px] left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-slate-300 to-transparent z-10"></div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              animate={{ rotate: [-1, 1, -1], x: [-2.5, 2.5, -2.5] }}
+              transition={{ delay: 0.1, rotate: { repeat: Infinity, duration: 8, ease: "easeInOut" }, x: { repeat: Infinity, duration: 10, ease: "easeInOut" } }}
+              whileHover={{ scale: 1.05, rotate: 0 }}
+              style={{ transformOrigin: "top center" }}
+              className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 group cursor-pointer snap-center select-none"
+            >
+              {/* Vertical Threads with Hooks for Card 1 */}
+              <div className="absolute -top-[42px] left-1/4 w-[1.5px] h-[42px] bg-slate-400/80 block origin-top z-20">
+                {/* The "Hook" that sits on the thread */}
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                {/* The "Clasp" at card junction */}
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="absolute -top-[42px] right-1/4 w-[1.5px] h-[42px] bg-slate-400/80 block origin-top z-20">
+                {/* The "Hook" that sits on the thread */}
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                {/* The "Clasp" at card junction */}
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="bg-lavender p-4 book-shape-1 shadow-xl border-2 border-white/50">
+                <div className="aspect-[3/4] overflow-hidden book-shape-1 border-4 border-white shadow-inner">
+                  <img src={port1} alt="Portrait" className="w-full h-full object-cover" draggable={false} />
                 </div>
-                <div className="absolute -top-[60px] right-1/4 w-px h-[60px] bg-slate-300 hidden md:block origin-top">
-                  <div className="absolute top-0 -left-1 w-2 h-2 bg-slate-400 rounded-full border border-white"></div>
+                <div className="mt-4 text-center">
+                  <h4 className="font-script text-2xl text-slate-950">The Silent Poet</h4>
                 </div>
-                
-                {/* Clips on the card */}
-                <div className="absolute top-1 left-1/4 -translate-x-1/2 w-4 h-4 bg-slate-100 rounded-full border-2 border-slate-300 z-20 hidden md:block"></div>
-                <div className="absolute top-1 right-1/4 translate-x-1/2 w-4 h-4 bg-slate-100 rounded-full border-2 border-slate-300 z-20 hidden md:block"></div>
+              </div>
+            </motion.div>
 
-                <div className="bg-lavender p-4 book-shape-1 shadow-xl border-2 border-white/50 transition-shadow group-hover:shadow-2xl">
-                  <div className="aspect-[3/4] overflow-hidden book-shape-1 border-4 border-white shadow-inner">
-                    <img src={IMAGES.portraitDark} alt="Portrait" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
-                  </div>
-                  <div className="mt-4 text-center">
-                    <h4 className="font-script text-2xl text-slate-950">The Silent Poet</h4>
-                  </div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              animate={{ rotate: [1, -1, 1], x: [2, -2, 2] }}
+              transition={{ delay: 0.2, rotate: { repeat: Infinity, duration: 7, ease: "easeInOut" }, x: { repeat: Infinity, duration: 9, ease: "easeInOut" } }}
+              whileHover={{ scale: 1.05, rotate: 0 }}
+              style={{ transformOrigin: "top center" }}
+              className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 mt-12 group cursor-pointer snap-center select-none"
+            >
+              {/* Vertical Threads with Hooks for Card 2 - Length matches staggered top */}
+              <div className="absolute -top-[90px] left-1/4 w-[1.5px] h-[90px] bg-slate-400/80 block origin-top z-20">
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="absolute -top-[90px] right-1/4 w-[1.5px] h-[90px] bg-slate-400/80 block origin-top z-20">
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="bg-mint p-4 book-shape-2 shadow-xl border-2 border-white/50">
+                <div className="aspect-square overflow-hidden book-shape-2 border-4 border-white shadow-inner">
+                  <img src={port2} alt="Abstract" className="w-full h-full object-cover" draggable={false} />
                 </div>
-                {/* Swaying Shadow */}
-                <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-3/4 h-4 bg-slate-900/5 blur-xl rounded-full -z-10"></div>
-              </motion.div>
-
-              {/* Card 2 */}
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                animate={{ 
-                  rotate: [1, -1, 1],
-                  x: [2, -2, 2]
-                }}
-                transition={{ 
-                  delay: 0.2,
-                  rotate: { repeat: Infinity, duration: 7, ease: "easeInOut" },
-                  x: { repeat: Infinity, duration: 9, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.02, rotate: 0 }}
-                className="relative z-10 w-full max-w-[280px] md:max-w-xs md:mt-16 group cursor-pointer"
-              >
-                {/* Vertical Threads for Card 2 */}
-                <div className="absolute -top-[124px] left-1/4 w-px h-[124px] bg-slate-300 hidden md:block origin-top">
-                  <div className="absolute top-0 -left-1 w-2 h-2 bg-slate-400 rounded-full border border-white"></div>
+                <div className="mt-4 text-center">
+                  <h4 className="font-script text-2xl text-slate-950">Golden Slumber</h4>
                 </div>
-                <div className="absolute -top-[124px] right-1/4 w-px h-[124px] bg-slate-300 hidden md:block origin-top">
-                  <div className="absolute top-0 -left-1 w-2 h-2 bg-slate-400 rounded-full border border-white"></div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              animate={{ rotate: [-0.8, 0.8, -0.8], x: [-3, 3, -3] }}
+              transition={{ delay: 0.4, rotate: { repeat: Infinity, duration: 9, ease: "easeInOut" }, x: { repeat: Infinity, duration: 11, ease: "easeInOut" } }}
+              whileHover={{ scale: 1.05, rotate: 0 }}
+              style={{ transformOrigin: "top center" }}
+              className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 group cursor-pointer snap-center select-none"
+            >
+              <div className="absolute -top-[42px] left-1/4 w-[1.5px] h-[42px] bg-slate-400/80 block origin-top z-20">
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="absolute -top-[42px] right-1/4 w-[1.5px] h-[42px] bg-slate-400/80 block origin-top z-20">
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="bg-peach p-4 book-shape-3 shadow-xl border-2 border-white/50">
+                <div className="aspect-[4/5] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
+                  <img src={port3} alt="Portrait" className="w-full h-full object-cover" draggable={false} />
                 </div>
-
-                {/* Clips on the card */}
-                <div className="absolute top-1 left-1/4 -translate-x-1/2 w-4 h-4 bg-slate-100 rounded-full border-2 border-slate-300 z-20 hidden md:block"></div>
-                <div className="absolute top-1 right-1/4 translate-x-1/2 w-4 h-4 bg-slate-100 rounded-full border-2 border-slate-300 z-20 hidden md:block"></div>
-
-                <div className="bg-mint p-4 book-shape-2 shadow-xl border-2 border-white/50 transition-shadow group-hover:shadow-2xl">
-                  <div className="aspect-square overflow-hidden book-shape-2 border-4 border-white shadow-inner">
-                    <img src={IMAGES.abstract} alt="Abstract" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
-                  </div>
-                  <div className="mt-4 text-center">
-                    <h4 className="font-script text-2xl text-slate-950">Golden Slumber</h4>
-                  </div>
+                <div className="mt-4 text-center">
+                  <h4 className="font-script text-2xl text-slate-950">Floral Vows</h4>
                 </div>
-                <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-3/4 h-4 bg-slate-900/5 blur-xl rounded-full -z-10"></div>
-              </motion.div>
+              </div>
+            </motion.div>
 
-              {/* Card 3 */}
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                animate={{ 
-                  rotate: [-0.8, 0.8, -0.8],
-                  x: [-3, 3, -3]
-                }}
-                transition={{ 
-                  delay: 0.4,
-                  rotate: { repeat: Infinity, duration: 9, ease: "easeInOut" },
-                  x: { repeat: Infinity, duration: 11, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.02, rotate: 0 }}
-                className="relative z-10 w-full max-w-[280px] md:max-w-xs group cursor-pointer"
-              >
-                {/* Vertical Threads for Card 3 */}
-                <div className="absolute -top-[60px] left-1/4 w-px h-[60px] bg-slate-300 hidden md:block origin-top">
-                  <div className="absolute top-0 -left-1 w-2 h-2 bg-slate-400 rounded-full border border-white"></div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              animate={{ rotate: [0.7, -0.7, 0.7], x: [2.5, -2.5, 2.5] }}
+              transition={{ delay: 0.1, rotate: { repeat: Infinity, duration: 7.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: 9.5, ease: "easeInOut" } }}
+              whileHover={{ scale: 1.05, rotate: 0 }}
+              style={{ transformOrigin: "top center" }}
+              className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 mt-6 group cursor-pointer snap-center select-none"
+            >
+              <div className="absolute -top-[66px] left-1/4 w-[1.5px] h-[66px] bg-slate-400/80 block origin-top z-20">
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="absolute -top-[66px] right-1/4 w-[1.5px] h-[66px] bg-slate-400/80 block origin-top z-20">
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="bg-rose p-4 book-shape-1 shadow-xl border-2 border-white/50">
+                <div className="aspect-[3/4] overflow-hidden book-shape-1 border-4 border-white shadow-inner">
+                  <img src={port4} alt="The Meeting" className="w-full h-full object-cover" draggable={false} />
                 </div>
-                <div className="absolute -top-[60px] right-1/4 w-px h-[60px] bg-slate-300 hidden md:block origin-top">
-                  <div className="absolute top-0 -left-1 w-2 h-2 bg-slate-400 rounded-full border border-white"></div>
+                <div className="mt-4 text-center">
+                  <h4 className="font-script text-2xl text-slate-950">The First Meeting</h4>
                 </div>
+              </div>
+            </motion.div>
 
-                {/* Clips on the card */}
-                <div className="absolute top-1 left-1/4 -translate-x-1/2 w-4 h-4 bg-slate-100 rounded-full border-2 border-slate-300 z-20 hidden md:block"></div>
-                <div className="absolute top-1 right-1/4 translate-x-1/2 w-4 h-4 bg-slate-100 rounded-full border-2 border-slate-300 z-20 hidden md:block"></div>
-
-                <div className="bg-peach p-4 book-shape-3 shadow-xl border-2 border-white/50 transition-shadow group-hover:shadow-2xl">
-                  <div className="aspect-[4/5] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
-                    <img src={IMAGES.portrait} alt="Portrait" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
-                  </div>
-                  <div className="mt-4 text-center">
-                    <h4 className="font-script text-2xl text-slate-950">Floral Vows</h4>
-                  </div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              animate={{ rotate: [-1.2, 1.2, -1.2], x: [-4, 4, -4] }}
+              transition={{ delay: 0.3, rotate: { repeat: Infinity, duration: 8.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: 10.5, ease: "easeInOut" } }}
+              whileHover={{ scale: 1.05, rotate: 0 }}
+              style={{ transformOrigin: "top center" }}
+              className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 group cursor-pointer snap-center select-none"
+            >
+              <div className="absolute -top-[42px] left-1/4 w-[1.5px] h-[42px] bg-slate-400/80 block origin-top z-20">
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="absolute -top-[42px] right-1/4 w-[1.5px] h-[42px] bg-slate-400/80 block origin-top z-20">
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="bg-sky p-4 book-shape-3 shadow-xl border-2 border-white/50">
+                <div className="aspect-[3/4] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
+                  <img src={port5} alt="Landscape" className="w-full h-full object-cover" draggable={false} />
                 </div>
-                <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-3/4 h-4 bg-slate-900/5 blur-xl rounded-full -z-10"></div>
-              </motion.div>
-            </div>
-
-            {/* Row 2 */}
-            <div className="relative flex flex-wrap md:flex-nowrap justify-center gap-10 md:gap-24 items-start">
-              {/* Horizontal Thread for Row 2 */}
-              <div className="absolute top-[-60px] left-[-15%] right-[-15%] h-[2px] bg-gradient-to-r from-transparent via-slate-300 to-transparent hidden md:block"></div>
-
-              {/* Card 4 */}
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                animate={{ 
-                  rotate: [0.7, -0.7, 0.7],
-                  x: [2.5, -2.5, 2.5]
-                }}
-                transition={{ 
-                  delay: 0.1,
-                  rotate: { repeat: Infinity, duration: 7.5, ease: "easeInOut" },
-                  x: { repeat: Infinity, duration: 9.5, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.02, rotate: 0 }}
-                className="relative z-10 w-full max-w-[280px] md:max-w-xs md:mt-12 group cursor-pointer"
-              >
-                {/* Vertical Threads for Card 4 */}
-                <div className="absolute -top-[108px] left-1/4 w-px h-[108px] bg-slate-300 hidden md:block origin-top">
-                  <div className="absolute top-0 -left-1 w-2 h-2 bg-slate-400 rounded-full border border-white"></div>
+                <div className="mt-4 text-center">
+                  <h4 className="font-script text-2xl text-slate-950">Mountain Silence</h4>
                 </div>
-                <div className="absolute -top-[108px] right-1/4 w-px h-[108px] bg-slate-300 hidden md:block origin-top">
-                  <div className="absolute top-0 -left-1 w-2 h-2 bg-slate-400 rounded-full border border-white"></div>
-                </div>
+              </div>
+            </motion.div>
 
-                {/* Clips on the card */}
-                <div className="absolute top-1 left-1/4 -translate-x-1/2 w-4 h-4 bg-slate-100 rounded-full border-2 border-slate-300 z-20 hidden md:block"></div>
-                <div className="absolute top-1 right-1/4 translate-x-1/2 w-4 h-4 bg-slate-100 rounded-full border-2 border-slate-300 z-20 hidden md:block"></div>
-
-                <div className="bg-rose p-4 book-shape-1 shadow-xl border-2 border-white/50 transition-shadow group-hover:shadow-2xl">
-                  <div className="aspect-[3/4] overflow-hidden book-shape-1 border-4 border-white shadow-inner">
-                    <img src={IMAGES.hero} alt="The Meeting" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
-                  </div>
-                  <div className="mt-4 text-center">
-                    <h4 className="font-script text-2xl text-slate-950">The First Meeting</h4>
-                  </div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              animate={{ rotate: [0.9, -0.9, 0.9], x: [3.5, -3.5, 3.5] }}
+              transition={{ delay: 0.5, rotate: { repeat: Infinity, duration: 6.5, ease: "easeInOut" }, x: { repeat: Infinity, duration: 8.5, ease: "easeInOut" } }}
+              whileHover={{ scale: 1.05, rotate: 0 }}
+              style={{ transformOrigin: "top center" }}
+              className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 mt-12 group cursor-pointer snap-center select-none mr-12"
+            >
+              {/* Vertical Threads with Hooks for Card 6 - Length matches Card 2 staggered top */}
+              <div className="absolute -top-[90px] left-1/4 w-[1.5px] h-[90px] bg-slate-400/80 block origin-top z-20">
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="absolute -top-[90px] right-1/4 w-[1.5px] h-[90px] bg-slate-400/80 block origin-top z-20">
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="bg-lavender p-4 book-shape-2 shadow-xl border-2 border-white/50">
+                <div className="aspect-[3/4] overflow-hidden book-shape-2 border-4 border-white shadow-inner">
+                  <img src={port6} alt="Wedding" className="w-full h-full object-cover" draggable={false} />
                 </div>
-                <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-3/4 h-4 bg-slate-900/5 blur-xl rounded-full -z-10"></div>
-              </motion.div>
-
-              {/* Card 5 */}
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                animate={{ 
-                  rotate: [-1.2, 1.2, -1.2],
-                  x: [-4, 4, -4]
-                }}
-                transition={{ 
-                  delay: 0.3,
-                  rotate: { repeat: Infinity, duration: 8.5, ease: "easeInOut" },
-                  x: { repeat: Infinity, duration: 10.5, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.02, rotate: 0 }}
-                className="relative z-10 w-full max-w-[280px] md:max-w-xs group cursor-pointer"
-              >
-                {/* Vertical Threads for Card 5 */}
-                <div className="absolute -top-[60px] left-1/4 w-px h-[60px] bg-slate-300 hidden md:block origin-top">
-                  <div className="absolute top-0 -left-1 w-2 h-2 bg-slate-400 rounded-full border border-white"></div>
+                <div className="mt-4 text-center">
+                  <h4 className="font-script text-2xl text-slate-950">Whispered Vows</h4>
                 </div>
-                <div className="absolute -top-[60px] right-1/4 w-px h-[60px] bg-slate-300 hidden md:block origin-top">
-                  <div className="absolute top-0 -left-1 w-2 h-2 bg-slate-400 rounded-full border border-white"></div>
-                </div>
+              </div>
+            </motion.div>
 
-                {/* Clips on the card */}
-                <div className="absolute top-1 left-1/4 -translate-x-1/2 w-4 h-4 bg-slate-100 rounded-full border-2 border-slate-300 z-20 hidden md:block"></div>
-                <div className="absolute top-1 right-1/4 translate-x-1/2 w-4 h-4 bg-slate-100 rounded-full border-2 border-slate-300 z-20 hidden md:block"></div>
-
-                <div className="bg-sky p-4 book-shape-3 shadow-xl border-2 border-white/50 transition-shadow group-hover:shadow-2xl">
-                  <div className="aspect-[3/4] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
-                    <img src={IMAGES.landscape} alt="Landscape" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
-                  </div>
-                  <div className="mt-4 text-center">
-                    <h4 className="font-script text-2xl text-slate-950">Ethereal Bloom</h4>
-                  </div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              animate={{ rotate: [-0.6, 0.6, -0.6], x: [-3, 3, -3] }}
+              transition={{ delay: 0.2, rotate: { repeat: Infinity, duration: 8, ease: "easeInOut" }, x: { repeat: Infinity, duration: 10, ease: "easeInOut" } }}
+              whileHover={{ scale: 1.05, rotate: 0 }}
+              style={{ transformOrigin: "top center" }}
+              className="relative z-10 w-[280px] md:w-[380px] flex-shrink-0 mt-6 group cursor-pointer snap-center select-none mr-12"
+            >
+              <div className="absolute -top-[66px] left-1/4 w-[1.5px] h-[66px] bg-slate-400/80 block origin-top z-20">
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="absolute -top-[66px] right-1/4 w-[1.5px] h-[66px] bg-slate-400/80 block origin-top z-20">
+                <div className="absolute -top-3.5 -left-[5.5px] w-3.5 h-4.5 border-[2px] border-slate-500 rounded-t-full border-b-0 bg-white shadow-sm"></div>
+                <div className="absolute bottom-0 -left-[3.5px] w-2 h-2 bg-slate-500 rounded-full border border-white"></div>
+              </div>
+              <div className="bg-sky p-4 book-shape-3 shadow-xl border-2 border-white/50">
+                <div className="aspect-[3/4] overflow-hidden book-shape-3 border-4 border-white shadow-inner">
+                  <img src={port7} alt="Final Portrait" className="w-full h-full object-cover" draggable={false} />
                 </div>
-                <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-3/4 h-4 bg-slate-900/5 blur-xl rounded-full -z-10"></div>
-              </motion.div>
-
-              {/* Card 6 */}
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                animate={{ 
-                  rotate: [0.9, -0.9, 0.9],
-                  x: [3.5, -3.5, 3.5]
-                }}
-                transition={{ 
-                  delay: 0.5,
-                  rotate: { repeat: Infinity, duration: 6.5, ease: "easeInOut" },
-                  x: { repeat: Infinity, duration: 8.5, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.02, rotate: 0 }}
-                className="relative z-10 w-full max-w-[280px] md:max-w-xs md:mt-16 group cursor-pointer"
-              >
-                {/* Vertical Threads for Card 6 */}
-                <div className="absolute -top-[124px] left-1/4 w-px h-[124px] bg-slate-300 hidden md:block origin-top">
-                  <div className="absolute top-0 -left-1 w-2 h-2 bg-slate-400 rounded-full border border-white"></div>
+                <div className="mt-4 text-center">
+                  <h4 className="font-script text-2xl text-slate-950">Eternal Echoes</h4>
                 </div>
-                <div className="absolute -top-[124px] right-1/4 w-px h-[124px] bg-slate-300 hidden md:block origin-top">
-                  <div className="absolute top-0 -left-1 w-2 h-2 bg-slate-400 rounded-full border border-white"></div>
-                </div>
-
-                {/* Clips on the card */}
-                <div className="absolute top-1 left-1/4 -translate-x-1/2 w-4 h-4 bg-slate-100 rounded-full border-2 border-slate-300 z-20 hidden md:block"></div>
-                <div className="absolute top-1 right-1/4 translate-x-1/2 w-4 h-4 bg-slate-100 rounded-full border-2 border-slate-300 z-20 hidden md:block"></div>
-
-                <div className="bg-lavender p-4 book-shape-2 shadow-xl border-2 border-white/50 transition-shadow group-hover:shadow-2xl">
-                  <div className="aspect-[3/4] overflow-hidden book-shape-2 border-4 border-white shadow-inner">
-                    <img src={IMAGES.weddingBack} alt="Wedding" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
-                  </div>
-                  <div className="mt-4 text-center">
-                    <h4 className="font-script text-2xl text-slate-950">Whispered Vows</h4>
-                  </div>
-                </div>
-                <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-3/4 h-4 bg-slate-900/5 blur-xl rounded-full -z-10"></div>
-              </motion.div>
-            </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* 5. Client Testimonials */}
-      <section id="testimonials" className="py-16 md:py-24 watercolor-bg overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center mb-8">
+      <section id="testimonials" className="pt-2 pb-10 md:py-14 watercolor-bg overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center mb-6">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -609,7 +630,7 @@ function Home() {
           </motion.h2>
         </div>
 
-        <div className="relative flex overflow-hidden group py-8 md:py-12">
+        <div className="relative flex overflow-hidden group py-4 md:py-8">
           <motion.div 
             animate={{ x: ["0%", "-50%"] }}
             transition={{ 
@@ -664,14 +685,14 @@ function Home() {
       </section>
 
       {/* 6. Final CTA & Footer Section */}
-      <section className="relative pt-16 pb-8 md:pt-20 md:pb-12 px-4 sm:px-6 overflow-hidden watercolor-bg">
+      <section className="relative pt-10 pb-4 md:pt-14 md:pb-8 px-4 sm:px-6 overflow-hidden watercolor-bg">
         {/* Decorative background text */}
         <div className="absolute -bottom-10 -left-20 text-[10rem] sm:text-[15rem] md:text-[20rem] font-script text-slate-900/5 select-none pointer-events-none -rotate-6">
           Finis
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center mb-16 md:mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center mb-10 md:mb-14">
             {/* Left: Compelling Copy */}
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
@@ -736,7 +757,7 @@ function Home() {
                   >
                     <div className="aspect-[4/5] overflow-hidden book-shape-1 border-4 md:border-6 border-white shadow-inner relative">
                       <img 
-                        src={IMAGES.hero} 
+                        src={port7} 
                         alt="Final Masterpiece" 
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
                         referrerPolicy="no-referrer" 
