@@ -20,6 +20,15 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { IMAGES, WhatsappIcon, TESTIMONIALS } from '../constants';
 
+import weddingImg from '../assets/services/wedding photo.webp';
+import preWeddingImg from '../assets/services/Pre-wedding-photo.webp';
+import babyImg from '../assets/services/baby-photo.webp';
+import modelingImg from '../assets/services/modeling-photo.webp';
+import productImg from '../assets/services/product-photo.webp';
+import port1 from '../assets/portfolio/portfolio-1.webp';
+import port2 from '../assets/portfolio/portfolio-2.webp';
+import port3 from '../assets/portfolio/portfolio-3.webp';
+
 const About = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -64,19 +73,19 @@ const About = () => {
       name: "Elena Vance",
       role: "Lead Photographer & Founder",
       bio: "With over a decade of experience, Elena captures the soul of every moment.",
-      img: "https://picsum.photos/seed/elena/400/500"
+      img: port1
     },
     {
       name: "Marcus Thorne",
       role: "Creative Director",
       bio: "Marcus ensures every anthology tells a cohesive and breathtaking story.",
-      img: "https://picsum.photos/seed/marcus/400/500"
+      img: port2
     },
     {
       name: "Sarah Jenkins",
       role: "Post-Production Artist",
       bio: "Sarah's touch brings the ethereal glow to every single frame.",
-      img: "https://picsum.photos/seed/sarah/400/500"
+      img: port3
     }
   ];
 
@@ -194,7 +203,7 @@ const About = () => {
             >
               <div className="relative z-10 rounded-[40px] md:rounded-[60px] overflow-hidden border-4 md:border-8 border-white shadow-2xl aspect-[4/5] max-w-sm mx-auto lg:max-w-none">
                 <img 
-                  src={IMAGES.portrait} 
+                  src={port1} 
                   alt="Elena Vance - Founder" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"

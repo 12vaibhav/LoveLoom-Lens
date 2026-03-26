@@ -18,6 +18,7 @@ import {
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { IMAGES, WhatsappIcon } from '../constants';
+import weddingImg from '../assets/services/wedding photo.webp';
 
 const SERVICES_DATA = [
   {
@@ -367,7 +368,7 @@ const Services = () => {
             <div className="relative order-1 md:order-2 max-w-sm mx-auto w-full">
               <div className="aspect-[4/5] rounded-[30px] md:rounded-[40px] overflow-hidden shadow-2xl rotate-2 md:rotate-3">
                 <img 
-                  src={IMAGES.weddingBack} 
+                  src={weddingImg} 
                   alt="Wedding Highlight" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"

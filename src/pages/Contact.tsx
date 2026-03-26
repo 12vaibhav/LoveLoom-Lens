@@ -18,6 +18,7 @@ import {
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { IMAGES, WhatsappIcon } from '../constants';
+import weddingImg from '../assets/services/wedding photo.webp';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -299,7 +300,7 @@ const Contact = () => {
                 className="relative rounded-[32px] md:rounded-[40px] overflow-hidden border-4 border-white shadow-xl aspect-square"
               >
                 <img 
-                  src={IMAGES.weddingBack} 
+                  src={weddingImg} 
                   alt="Wedding Couple" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
