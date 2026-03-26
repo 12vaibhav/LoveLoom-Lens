@@ -359,20 +359,20 @@ const Services = () => {
       </section>
 
       {/* 6. Final CTA section */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 text-center">
+      <section className="py-12 md:py-16 px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           className="max-w-3xl mx-auto"
         >
-          <h2 className="font-script text-5xl sm:text-6xl md:text-8xl text-slate-950 mb-6 md:mb-8">Ready to Capture Your Story?</h2>
-          <p className="text-slate-600 text-base sm:text-lg mb-8 md:mb-12">Every masterpiece begins with a single conversation. Let us help you write yours.</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-            <button className="w-full sm:w-auto bg-accent-pink text-white px-8 py-4 sm:px-12 sm:py-5 rounded-full font-bold text-base sm:text-lg hover:bg-white hover:text-accent-pink border-2 border-accent-pink transition-all shadow-xl">
+          <h2 className="font-script text-5xl sm:text-6xl md:text-7xl text-slate-950 mb-4 md:mb-6">Ready to Capture Your Story?</h2>
+          <p className="text-slate-600 text-sm sm:text-base mb-6 md:mb-10 max-w-2xl mx-auto">Every masterpiece begins with a single conversation. Let us help you write yours.</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
+            <button className="w-full sm:w-auto bg-accent-pink text-white px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-white hover:text-accent-pink border-2 border-accent-pink transition-all shadow-xl">
               Begin Your Journey
             </button>
-            <button className="w-full sm:w-auto bg-white text-slate-900 border-2 border-accent-pink px-8 py-4 sm:px-12 sm:py-5 rounded-full font-bold text-base sm:text-lg hover:bg-accent-pink hover:text-white transition-all shadow-md">
+            <button className="w-full sm:w-auto bg-white text-slate-900 border-2 border-accent-pink px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-accent-pink hover:text-white transition-all shadow-md">
               Contact Studio
             </button>
           </div>
