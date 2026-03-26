@@ -115,7 +115,7 @@ function Home() {
   const [scrollLeftValue, setScrollLeftValue] = useState(0);
 
   const handleMouseDown = (e: React.MouseEvent) => {
-    if (!scrollRef.current) return;
+    if (!scrollRef.current || isMobile) return;
     setIsDragging(true);
     // Use pageX to handle dragging properly
     setStartX(e.pageX - scrollRef.current.offsetLeft);
@@ -125,17 +125,19 @@ function Home() {
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return;
     setIsDragging(false);
     if (scrollRef.current) scrollRef.current.style.scrollBehavior = 'smooth';
   };
   
   const handleMouseUp = () => {
+    if (isMobile) return;
     setIsDragging(false);
     if (scrollRef.current) scrollRef.current.style.scrollBehavior = 'smooth';
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollRef.current) return;
+    if (!isDragging || !scrollRef.current || isMobile) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
     const walk = (x - startX) * 2; // Increased factor for better responsiveness
@@ -406,7 +408,8 @@ function Home() {
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
-          className={`relative w-full overflow-x-auto no-scrollbar scroll-smooth cursor-grab active:cursor-grabbing select-none ${!isDragging ? 'snap-x snap-mandatory' : ''}`}
+          className={`relative w-full overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing select-none touch-pan-x transition-shadow duration-300 ${!isDragging && !isMobile ? 'snap-x snap-mandatory scroll-smooth' : ''} ${isMobile ? 'overscroll-x-contain' : ''}`}
+          style={{ WebkitOverflowScrolling: 'touch' }}
         >
           <div className="flex items-start gap-8 md:gap-20 px-6 md:px-[8vw] pt-24 pb-4 md:pb-8 min-w-max relative group select-none">
             {/* Single Continuous Horizontal Thread - Lifted to align with hooks */}
