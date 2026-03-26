@@ -210,89 +210,57 @@ const Services = () => {
         </div>
       </section>
 
-      {/* 3. Services Overview */}
-      <section id="services-overview" className="py-10 md:py-12 px-4 sm:px-6 unifying-bg">
+      {/* 3. Combined Service Selection & Pricing Section */}
+      <section id="services-overview" className="py-12 md:py-20 px-4 sm:px-6 unifying-bg shadow-inner relative overflow-hidden">
+        {/* Background elements for depth */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-accent-pink/5 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-mint/5 rounded-full blur-3xl -z-10"></div>
+        
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="font-script text-4xl sm:text-5xl md:text-6xl text-slate-950 mb-4">The Anthology of Services</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto mb-6 text-sm sm:text-base">Explore our range of specialized photography services, each designed to capture a unique facet of your story.</p>
-            <div className="flex items-center justify-center gap-2 text-peach font-bold text-xs sm:text-sm uppercase tracking-widest animate-pulse">
-              <span>Select a service to view its pricing</span>
-              <ArrowRight size={14} className="rotate-90" />
-            </div>
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="font-script text-4xl sm:text-5xl md:text-7xl text-slate-950 mb-4">The Anthology of Packages</h2>
+            <div className="h-1.5 w-24 bg-accent-pink rounded-full mx-auto mb-6"></div>
+            <p className="text-slate-600 max-w-2xl mx-auto text-base md:text-lg">
+              Every chapter of your life is unique. Select a service below to explore our carefully crafted photography investment options.
+            </p>
           </div>
           
-          <div className="flex overflow-x-auto pb-6 px-4 -mx-4 gap-4 sm:gap-6 no-scrollbar snap-x snap-proximity">
-            {SERVICES_DATA.map((service, idx) => (
-              <motion.div
+          {/* Service Selector Tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 md:mb-16">
+            {SERVICES_DATA.map((service) => (
+              <button
                 key={service.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                onClick={() => scrollToPackages(service.id)}
-                className={`flex-shrink-0 w-[240px] sm:w-64 snap-center cursor-pointer p-5 sm:p-6 rounded-[32px] border transition-all duration-300 group relative overflow-hidden ${
+                onClick={() => setActiveServiceId(service.id)}
+                className={`flex items-center gap-3 px-5 py-3 rounded-full font-bold text-sm transition-all duration-300 border-2 ${
                   activeServiceId === service.id 
-                  ? 'bg-white border-accent-pink shadow-xl ring-4 ring-accent-pink/10' 
-                  : 'bg-white/50 backdrop-blur-sm border-lavender/30 hover:border-accent-pink/50 hover:shadow-lg'
+                  ? 'bg-accent-pink border-accent-pink text-white shadow-lg scale-105' 
+                  : 'bg-white/60 backdrop-blur-sm border-lavender/30 text-slate-600 hover:border-accent-pink/40 hover:bg-white'
                 }`}
               >
-                {activeServiceId === service.id && (
-                  <motion.div 
-                    layoutId="active-indicator"
-                    className="absolute top-0 right-0 bg-accent-pink text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-tighter"
-                  >
-                    Active
-                  </motion.div>
-                )}
-                
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-sm transition-all duration-300 ${
-                  activeServiceId === service.id ? 'bg-accent-pink text-white scale-110' : 'bg-white group-hover:scale-110'
-                }`}>
-                  {React.cloneElement(service.icon as React.ReactElement, { 
-                    size: 24,
-                    className: activeServiceId === service.id ? 'text-white' : (service.icon as React.ReactElement).props.className
-                  })}
+                <div className={`${activeServiceId === service.id ? 'text-white' : ''}`}>
+                  {React.cloneElement(service.icon as React.ReactElement, { size: 18 })}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-1">{service.title}</h3>
-                <p className="text-slate-500 text-xs line-clamp-2 leading-relaxed mb-4">
-                  {service.description}
-                </p>
-                
-                <div className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
-                  activeServiceId === service.id ? 'text-accent-pink' : 'text-slate-400 group-hover:text-accent-pink'
-                }`}>
-                  {activeServiceId === service.id ? 'Viewing Pricing' : 'Click to View Pricing'}
-                  <ArrowRight size={12} className={activeServiceId === service.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all'} />
-                </div>
-              </motion.div>
+                {service.title}
+              </button>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* 4. Detailed Packages */}
-      <section id="packages" ref={packagesRef} className="py-10 md:py-12 px-4 sm:px-6 bg-white/30 min-h-[600px]">
-        <div className="max-w-7xl mx-auto">
+          {/* Active Service Content & Cards */}
           <AnimatePresence mode="wait">
             <motion.div 
               key={activeServiceId}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="space-y-12"
             >
-              <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 md:mb-8 gap-4 md:gap-6">
-                <div>
-                  <div className="flex items-center gap-4 mb-2">
-                    <div className="w-10 h-10 bg-accent-pink/20 rounded-xl flex items-center justify-center text-accent-pink shrink-0">
-                      {React.cloneElement(activeService.icon as React.ReactElement, { size: 20 })}
-                    </div>
-                    <h2 className="font-script text-3xl sm:text-4xl md:text-5xl text-slate-950">{activeService.title}</h2>
-                  </div>
-                  <div className="h-1 w-20 bg-accent-pink rounded-full"></div>
+              <div className="text-center max-w-3xl mx-auto space-y-4">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent-pink/10 text-accent-pink rounded-full text-xs font-bold uppercase tracking-widest mb-2">
+                  {activeService.icon}
+                  Tailored Excellence
                 </div>
-                <p className="text-slate-600 max-w-md italic text-sm sm:text-base">{activeService.description}</p>
+                <h3 className="font-script text-3xl sm:text-4xl md:text-5xl text-slate-900 italic">"{activeService.description}"</h3>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
@@ -302,36 +270,41 @@ const Services = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: pIdx * 0.1 }}
-                    whileHover={{ y: -10 }}
-                    className={`relative p-6 sm:p-8 rounded-[40px] border backdrop-blur-md flex flex-col h-full ${
+                    whileHover={{ y: -12 }}
+                    className={`relative p-8 sm:p-10 rounded-[40px] border flex flex-col h-full transition-all duration-500 ${
                       pkg.name === 'Premium' 
-                      ? 'bg-white/80 border-accent-pink shadow-xl scale-100 md:scale-105 z-10' 
-                      : 'bg-white/40 border-lavender/30 shadow-sm'
+                      ? 'bg-white border-accent-pink shadow-2xl scale-100 md:scale-105 lg:scale-110 z-10' 
+                      : 'bg-white/70 backdrop-blur-md border-lavender/40 shadow-xl'
                     }`}
                   >
                     {pkg.name === 'Premium' && (
-                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent-pink text-white px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
+                      <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-accent-pink text-white px-6 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase shadow-md pointer-events-none">
                         Most Popular
                       </div>
                     )}
-                    <div className="mb-6 sm:mb-8">
-                      <h3 className="text-xl font-bold text-slate-900 mb-2">{pkg.name}</h3>
-                      <div className="text-3xl sm:text-4xl font-script text-slate-950">{pkg.price}</div>
+                    <div className="mb-8 text-center md:text-left">
+                      <h4 className="text-xl font-bold text-slate-900 mb-3">{pkg.name}</h4>
+                      <div className="flex items-baseline gap-1 justify-center md:justify-start">
+                        <span className="text-4xl sm:text-5xl font-script text-slate-950">{pkg.price}</span>
+                        <span className="text-slate-400 text-sm font-sans">USD</span>
+                      </div>
                     </div>
-                    <ul className="space-y-4 mb-8 sm:mb-10 flex-grow">
+                    <ul className="space-y-4 mb-10 flex-grow">
                       {pkg.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-3 text-slate-700 text-sm">
-                          <Check size={16} className="text-mint mt-0.5 shrink-0" />
+                        <li key={fIdx} className="flex items-start gap-4 text-slate-700 text-sm md:text-base">
+                          <div className="w-5 h-5 rounded-full bg-mint/20 flex items-center justify-center shrink-0 mt-0.5">
+                            <Check size={12} className="text-mint font-bold" />
+                          </div>
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <button className={`w-full py-3 sm:py-4 rounded-full font-bold transition-all ${
+                    <button className={`w-full py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-2xl ${
                       pkg.name === 'Premium'
-                      ? 'bg-accent-pink text-white hover:bg-white hover:text-accent-pink border-2 border-accent-pink shadow-lg'
-                      : 'bg-white/60 text-slate-900 border-2 border-accent-pink hover:bg-accent-pink hover:text-white'
+                      ? 'bg-accent-pink text-white hover:bg-slate-950 border-2 border-accent-pink hover:border-slate-950'
+                      : 'bg-white text-slate-900 border-2 border-accent-pink hover:bg-accent-pink hover:text-white'
                     }`}>
-                      Select {pkg.name}
+                      Inquire for {pkg.name}
                     </button>
                   </motion.div>
                 ))}
