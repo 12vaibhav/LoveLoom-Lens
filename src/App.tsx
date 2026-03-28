@@ -247,7 +247,7 @@ function Home() {
         )}
 
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 md:gap-16 lg:gap-32 px-4 sm:px-6 text-center lg:text-left">
-          <motion.div style={{ y: textY }} className="flex-[1.2] z-10 lg:pr-12 order-1 lg:order-1">
+          <motion.div style={!isMobile ? { y: textY } : {}} className="flex-[1.2] z-10 lg:pr-12 order-1 lg:order-1">
             <motion.div
               initial="hidden"
               animate="show"
@@ -286,7 +286,7 @@ function Home() {
             </motion.div>
           </motion.div>
 
-          <motion.div style={{ y: imageY }} className="flex-1 relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-md lg:max-w-xl lg:-mt-12 order-2 lg:order-2 mb-4 lg:mb-0">
+          <motion.div style={!isMobile ? { y: imageY } : {}} className="flex-1 relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-md lg:max-w-xl lg:-mt-12 order-2 lg:order-2 mb-4 lg:mb-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
               animate={{ opacity: 1, scale: 1, rotate: 2 }}
@@ -298,8 +298,8 @@ function Home() {
                 transition={{ repeat: Infinity, duration: isMobile ? 6 : 7, ease: "easeInOut" }}
                 className="relative"
               >
-                {/* Decorative backdrop glow for the image */}
-                <div className="absolute inset-0 bg-white/40 blur-3xl rounded-full transform scale-125 -z-10"></div>
+                {/* Decorative backdrop glow for the image - Disabled on mobile to save GPU */}
+                {!isMobile && <div className="absolute inset-0 bg-white/40 blur-3xl rounded-full transform scale-125 -z-10"></div>}
 
                 {/* Secondary Smaller Card on the Left */}
                 <motion.div
@@ -315,8 +315,11 @@ function Home() {
                         srcSet={`${smallHeroMobile} 400w, ${smallHero} 800w`}
                         sizes="(max-width: 640px) 160px, 200px"
                         alt="Supporting showcase"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover performance-gpu"
                         referrerPolicy="no-referrer"
+                        loading="eager"
+                        // @ts-ignore
+                        fetchpriority="high"
                       />
                     </div>
                   </div>
@@ -328,8 +331,11 @@ function Home() {
                     srcSet={`${bigHeroMobile} 500w, ${bigHero} 1200w`}
                     sizes="(max-width: 768px) 100vw, 800px"
                     alt="Whimsical couple illustration"
-                    className="w-full h-auto book-shape-3 object-cover shadow-inner"
+                    className="w-full h-auto book-shape-3 object-cover shadow-inner performance-gpu"
                     referrerPolicy="no-referrer"
+                    loading="eager"
+                    // @ts-ignore
+                    fetchpriority="high"
                   />
 
                   {/* Floating badge */}
@@ -349,7 +355,7 @@ function Home() {
       </section>
 
       {/* 3. Services Section */}
-      <section id="services" className="py-10 md:py-14 unifying-bg overflow-hidden">
+      <section id="services" className="py-10 md:py-14 unifying-bg overflow-hidden content-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: isMobile ? 20 : 30 }}
@@ -398,7 +404,7 @@ function Home() {
       </section>
 
       {/* 4. Featured Portfolio */}
-      <section id="portfolio" className="pt-10 pb-2 md:py-14 bg-white relative overflow-hidden">
+      <section id="portfolio" className="pt-10 pb-2 md:py-14 bg-white relative overflow-hidden content-auto">
         {/* Decorative background text */}
         <div className="absolute top-10 -right-20 text-[10rem] sm:text-[15rem] font-script text-slate-50 opacity-[0.03] select-none pointer-events-none rotate-12">
           Gallery
@@ -697,7 +703,7 @@ function Home() {
       </section>
 
       {/* 5. Client Testimonials */}
-      <section id="testimonials" className="pt-2 pb-10 md:py-14 watercolor-bg overflow-hidden">
+      <section id="testimonials" className="pt-2 pb-10 md:py-14 watercolor-bg overflow-hidden content-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center mb-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

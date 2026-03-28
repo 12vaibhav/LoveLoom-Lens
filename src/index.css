@@ -44,9 +44,27 @@
                       radial-gradient(circle at 20% 80%, var(--color-rose) 0%, transparent 40%);
     background-blend-mode: multiply;
   }
+
+  @media (max-width: 768px) {
+    .watercolor-bg {
+      background-image: linear-gradient(135deg, #FFFCF8 0%, #FFF5E6 100%);
+      background-blend-mode: normal;
+    }
+  }
   
   .unifying-bg {
     background: linear-gradient(180deg, #FFFCF8 0%, #FFF0E0 100%);
+  }
+
+  .performance-gpu {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
   }
 
   .book-shape-1 {
