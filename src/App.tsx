@@ -165,8 +165,8 @@ function Home() {
           transition={{ duration: 0.5 }}
           className={`max-w-6xl mx-auto flex items-center justify-between rounded-full px-6 sm:px-8 py-3 border border-lavender shadow-sm ${isMobile ? 'bg-white' : 'bg-white/70 backdrop-blur-md'}`}
         >
-          <a href="/" className="flex items-center gap-2 text-2xl md:text-3xl font-script font-bold text-slate-950">
-            <img src={brandLogo} alt="LoveLoom Lens Logo" className="h-8 md:h-10 w-auto object-contain" />
+          <a href="/" className="flex items-center gap-2 text-2xl md:text-3xl font-script font-bold text-slate-950 group">
+            <img src={brandLogo} alt="LoveLoom Lens Logo" className="h-8 md:h-10 w-auto object-contain drop-shadow-md group-hover:drop-shadow-lg transition-all" />
             LoveLoom Lens
           </a>
           <div className="hidden md:flex items-center gap-8 lg:gap-10">
