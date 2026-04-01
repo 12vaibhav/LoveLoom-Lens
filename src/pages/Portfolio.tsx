@@ -14,7 +14,6 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-import logoImg from '../assets/logo/logo.jpg';
 import { IMAGES, WhatsappIcon } from '../constants';
 
 import weddingImg from '../assets/services/wedding photo.webp';
@@ -47,6 +46,7 @@ import port6 from '../assets/portfolio/portfolio-6.webp';
 import port6Mobile from '../assets/portfolio/portfolio-6-mobile.webp';
 import port7 from '../assets/portfolio/portfolio-7.webp';
 import port7Mobile from '../assets/portfolio/portfolio-7-mobile.webp';
+import brandLogo from '../assets/logo/Logo_updated.png';
 
 // Reusable Tilt Component
 const TiltCard = ({ children, className, onClick }: { children: React.ReactNode, className?: string, onClick?: () => void }) => {
@@ -173,7 +173,7 @@ export default function Portfolio() {
           className="max-w-6xl mx-auto flex items-center justify-between bg-white/70 backdrop-blur-md rounded-full px-6 sm:px-8 py-3 border border-lavender shadow-sm"
         >
           <a href="/" className="flex items-center gap-2 text-2xl md:text-3xl font-script font-bold text-slate-950">
-            <img src={logoImg} alt="LoveLoom Lens Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain mix-blend-multiply" />
+            <img src={brandLogo} alt="LoveLoom Lens Logo" className="h-8 md:h-10 w-auto object-contain" />
             LoveLoom Lens
           </a>
           <div className="hidden md:flex items-center gap-8 lg:gap-10">

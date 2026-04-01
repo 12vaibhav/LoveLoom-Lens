@@ -18,7 +18,6 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-import logoImg from '../assets/logo/logo.jpg';
 import { IMAGES, WhatsappIcon, TESTIMONIALS } from '../constants';
 
 import weddingImg from '../assets/services/wedding photo.webp';
@@ -32,6 +31,7 @@ import port2 from '../assets/portfolio/portfolio-2.webp';
 import port2Mobile from '../assets/portfolio/portfolio-2-mobile.webp';
 import port3 from '../assets/portfolio/portfolio-3.webp';
 import port3Mobile from '../assets/portfolio/portfolio-3-mobile.webp';
+import brandLogo from '../assets/logo/Logo_updated.png';
 
 const About = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -108,7 +108,7 @@ const About = () => {
           className="max-w-6xl mx-auto flex items-center justify-between bg-white/70 backdrop-blur-md rounded-full px-6 sm:px-8 py-3 border border-lavender shadow-sm"
         >
           <a href="/" className="flex items-center gap-2 text-2xl md:text-3xl font-script font-bold text-slate-950">
-            <img src={logoImg} alt="LoveLoom Lens Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain mix-blend-multiply" />
+            <img src={brandLogo} alt="LoveLoom Lens Logo" className="h-8 md:h-10 w-auto object-contain" />
             LoveLoom Lens
           </a>
           <div className="hidden md:flex items-center gap-8 lg:gap-10">
