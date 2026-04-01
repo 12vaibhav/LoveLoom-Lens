@@ -173,7 +173,7 @@ export default function Portfolio() {
           className="max-w-6xl mx-auto flex items-center justify-between bg-white/70 backdrop-blur-md rounded-full px-6 sm:px-8 py-3 border border-lavender shadow-sm"
         >
           <a href="/" className="flex items-center gap-2 text-2xl md:text-3xl font-script font-bold text-slate-950">
-            <img src={logoImg} alt="LoveLoom Lens Logo" className="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full" />
+            <img src={logoImg} alt="LoveLoom Lens Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain mix-blend-multiply" />
             LoveLoom Lens
           </a>
           <div className="hidden md:flex items-center gap-8 lg:gap-10">
